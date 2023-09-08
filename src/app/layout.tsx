@@ -1,3 +1,6 @@
+import CNavbar from "@/components/navbar/CNavbar"
+import { Providers } from "@/components/providers"
+
 import "@/styles/globals.css"
 
 import type { Metadata } from "next"
@@ -17,7 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Providers>
+          <CNavbar />
+          {children}
+        </Providers>
+      </body>
     </html>
   )
 }
