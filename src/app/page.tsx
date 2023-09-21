@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useTheme } from "next-themes"
+import Hero from '../components/heroSection/Hero';
 
 type Theme = "light" | "dark"
 
@@ -10,8 +11,8 @@ export default function Home() {
   const { setTheme } = useTheme()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 dark:bg-black dark:text-white">
-      <button>Development will start soon</button>
+    <main className="">
+      <Hero/>
     </main>
   )
 }
