@@ -1,4 +1,4 @@
-import CNavbar from "@/components/navbar/CNavbar"
+import CustomNavBar from "@/components/navbar/CustomNavBar"
 import { Providers } from "@/components/providers"
 
 import "@/styles/globals.css"
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <CNavbar />
+          <CustomNavBar />
           {children}
         </Providers>
       </body>
