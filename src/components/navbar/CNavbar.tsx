@@ -119,7 +119,7 @@ export default function CNavbar() {
           </NavbarItem>
           <DropdownMenu
             aria-label="ACME features"
-            className="w-[340px]"
+            className="w-screen"
             itemClasses={{
               base: "gap-4",
             }}
