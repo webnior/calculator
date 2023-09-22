@@ -208,10 +208,5 @@ export default function calculateTotalFlipkartFeesAndGST(
   // Calculate GST on Total Flipkart fees
   const gst: number = (totalFees / 100) * 18
 
-  console.log("Fixed Fee:", fixedFee)
-  console.log("Commission Fee:", commissionRate)
-  console.log("Collection Fee:", collectionFee)
-  console.log("Shipping Fee:", shippingFee)
-  console.log("18% gst on total fees", gst)
   return { totalFees, gst }
 }

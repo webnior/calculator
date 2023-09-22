@@ -25,7 +25,6 @@ export default function FlipkartCalculator() {
     )
 
     setTotalFeesAndGST(result)
-    console.log("Calculated Total Fees and GST", result)
   }, [])
 
   return (
