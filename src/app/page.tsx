@@ -2,7 +2,10 @@
 
 import { useState } from "react"
 import { useTheme } from "next-themes"
-import Hero from '../components/heroSection/Hero';
+
+import FlipkartCalculator from "@/components/calculator/flipkart"
+
+import Hero from "../components/heroSection/Hero"
 
 type Theme = "light" | "dark"
 
@@ -12,7 +15,8 @@ export default function Home() {
 
   return (
     <main className="">
-      <Hero/>
+      <Hero />
+      <FlipkartCalculator />
     </main>
   )
 }
