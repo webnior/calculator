@@ -7,7 +7,7 @@ import Tabs from "./tab"
 export default function CareerPage() {
   return (
     <>
-      <div className="w-screen  flex flex-col  items-center">
+      <div className="container  flex flex-col  items-center">
         <div className="w-[800px] h-[400px] flex justify-center items-center">
           <Image
             src="/team.jpg"
@@ -35,28 +35,28 @@ export default function CareerPage() {
               in providing original website content writing, blog writing and
               strategies for various marketing needs across different industry
               verticals.
-            </p> 
+            </p>
           </div>
           <div className="text-left max-w-md mx-auto bg-white p-6 ">
-                <h1 className="text-2xl font-semibold mb-4">
-                  Our Specialized Services
-                </h1>
-                <ul className="list-disc ml-6 text-left">
-                  <li className="mb-2">Catalogue Creation</li>
-                  <li className="mb-2">Account Management Services</li>
-                  <li className="mb-2">Account Creation Services</li>
-                  <li className="mb-2">Sales Boost Services</li>
-                  <li className="mb-2">Content Writing</li>
-                  <li className="mb-2">Branding</li>
-                  <li className="mb-2">Website Designing</li>
-                  <li className="mb-2">Website Development</li>
-                  <li className="mb-2">Search Engine Optimization (SEO)</li>
-                  <li className="mb-2">Social Media Marketing (SMM)</li>
-                  <li className="mb-2">Search Engine Marketing</li>
-                  <li className="mb-2">Online Reputation Management (ORM)</li>
-                  <li className="mb-2">Social Media Promotion (SMO)</li>
-                </ul>
-              </div>
+            <h1 className="text-2xl font-semibold mb-4">
+              Our Specialized Services
+            </h1>
+            <ul className="list-disc ml-6 text-left">
+              <li className="mb-2">Catalogue Creation</li>
+              <li className="mb-2">Account Management Services</li>
+              <li className="mb-2">Account Creation Services</li>
+              <li className="mb-2">Sales Boost Services</li>
+              <li className="mb-2">Content Writing</li>
+              <li className="mb-2">Branding</li>
+              <li className="mb-2">Website Designing</li>
+              <li className="mb-2">Website Development</li>
+              <li className="mb-2">Search Engine Optimization (SEO)</li>
+              <li className="mb-2">Social Media Marketing (SMM)</li>
+              <li className="mb-2">Search Engine Marketing</li>
+              <li className="mb-2">Online Reputation Management (ORM)</li>
+              <li className="mb-2">Social Media Promotion (SMO)</li>
+            </ul>
+          </div>
         </div>
       </div>
 
