@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect, useState } from "react"
@@ -40,9 +41,11 @@ export default function Tabs() {
     setActiveTab(tab)
   }
 
+
   return (
     <div className="flex flex-col items-center">
       <div className="flex space-x-4">
+
         {tabs.map((tab: ActiveTab, i: number) => (
           <TabButton
             activeTab={activeTab === tab}
@@ -51,10 +54,12 @@ export default function Tabs() {
             key={i}
           />
         ))}
+
         {/* Add similar buttons for other tabs */}
       </div>
 
       <div className="mt-4">
+
         {activeTab === "All" && (
           <div className="text-gray-700">
             <div className="grid grid-cols-2 gap-4 mb-16">
@@ -135,4 +140,5 @@ const JobCard = ({ job }: any) => {
       </div>
     </a>
   )
+
 }
