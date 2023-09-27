@@ -1,6 +1,8 @@
 // components/Hero.js
 import React from "react"
 
+import ActionButton from "./ActionButton"
+
 import "../../styles/globals.css"
 
 import TrustedPartnersSection from "./Partner"
@@ -8,7 +10,7 @@ import TrustedPartnersSection from "./Partner"
 const Hero: React.FC = () => {
   return (
     <section className="dark:bg-white dark:text-black">
-      <div className="container flex flex-col justify-center p-20 mx-auto sm:py-3 lg:py-3 lg:flex-row lg:justify-between">
+      <div className="container flex flex-col justify-center mx-auto sm:pt-3 lg:pt-3 lg:flex-row lg:justify-between">
         <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
           <div className=" text-3xl md:text-4xl [text-wrap:balance] bg-clip-text  bg-gradient-to-r from-slate-200/60 to-50% to-slate-200">
             We&apos;re{" "}
@@ -26,17 +28,11 @@ const Hero: React.FC = () => {
           <h1 className="text-5xl font-bold sm:text-6xl herosection-heading-text">
             E-COMMERCE AND DIGITAL
           </h1>
-          <p className="mt-6 mb-8 text-3xl font-semibold sm:mb-12">
+          <p className="mt-6 text-3xl font-semibold sm:mb-3">
             Solution Company
           </p>
           <div className="">
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="bg-blue-600 rounded-full p-5 text-lg font-medium text-slate-100"
-            >
-              Get Started
-            </a>
+            <ActionButton />
           </div>
         </div>
         <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">

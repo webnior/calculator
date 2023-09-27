@@ -18,6 +18,8 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline"
 
+import { Logo } from "./Logo"
+
 const calculator = [
   {
     name: "Amazon",
@@ -102,8 +104,7 @@ export default function CustomNavBar() {
       >
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Technovita</span>
-            <h1>TECHNOVITA</h1>
+            <Logo />
           </a>
         </div>
         <div className="flex lg:hidden">
