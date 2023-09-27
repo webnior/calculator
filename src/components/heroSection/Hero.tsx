@@ -8,7 +8,7 @@ import TrustedPartnersSection from "./Partner"
 const Hero: React.FC = () => {
   return (
     <section className="dark:bg-white dark:text-black">
-      <div className="container flex flex-col justify-center p-20 mx-auto sm:py-5 lg:py-10 lg:flex-row lg:justify-between">
+      <div className="container flex flex-col justify-center p-20 mx-auto sm:py-3 lg:py-3 lg:flex-row lg:justify-between">
         <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
           <div className=" text-3xl md:text-4xl [text-wrap:balance] bg-clip-text  bg-gradient-to-r from-slate-200/60 to-50% to-slate-200">
             We&apos;re{" "}
@@ -29,11 +29,11 @@ const Hero: React.FC = () => {
           <p className="mt-6 mb-8 text-3xl font-semibold sm:mb-12">
             Solution Company
           </p>
-          <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start bg-slate-50">
+          <div className="">
             <a
               rel="noopener noreferrer"
               href="#"
-              className="px-8 py-3 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
+              className="bg-blue-600 rounded-full p-5 text-lg font-medium text-slate-100"
             >
               Get Started
             </a>
