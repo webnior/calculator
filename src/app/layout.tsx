@@ -1,3 +1,4 @@
+import Footer from "@/components/footer/footer"
 import CustomNavBar from "@/components/navbar/CustomNavBar"
 import { Providers } from "@/components/providers"
 
@@ -24,9 +25,9 @@ export default function RootLayout({
         <Providers>
           <CustomNavBar />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>
   )
 }
-
