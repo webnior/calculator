@@ -2,6 +2,7 @@
 
 import { Fragment, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react"
 import {
   ChevronDownIcon,
@@ -103,9 +104,9 @@ export default function CustomNavBar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <Logo />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -361,12 +362,19 @@ export default function CustomNavBar() {
             </Transition>
           </Popover>
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link
+            href="/marketplace"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Marketplace
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          </Link>
+          <Link
+            href="/company"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Company
-          </a>
+          </Link>
+          <Link href="/career">Career</Link>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">

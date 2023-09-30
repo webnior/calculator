@@ -7,6 +7,9 @@ import "../../styles/globals.css"
 
 import TrustedPartnersSection from "./Partner"
 
+import Image from "next/image"
+
+
 const Hero: React.FC = () => {
   return (
     <section className="dark:bg-white dark:text-black">
