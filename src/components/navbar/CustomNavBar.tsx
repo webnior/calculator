@@ -24,7 +24,7 @@ import { Logo } from "./Logo"
 const calculator = [
   {
     name: "Amazon",
-    description: "Get a better understanding of your traffic",
+    description: "Get a better understanding traffic",
     href: "#",
     icon: ChartPieIcon,
   },
@@ -36,7 +36,7 @@ const calculator = [
   },
   {
     name: "D-Mart",
-    description: "Your customers’ data will be safe and secure",
+    description: "Your customers’ data will be safe",
     href: "#",
     icon: FingerPrintIcon,
   },
@@ -56,7 +56,7 @@ const calculator = [
 const products = [
   {
     name: "Analytics",
-    description: "Get a better understanding of your traffic",
+    description: "Get a better understanding traffic",
     href: "#",
     icon: ChartPieIcon,
   },
@@ -68,7 +68,7 @@ const products = [
   },
   {
     name: "Security",
-    description: "Your customers’ data will be safe and secure",
+    description: "Your customers’ data will be safe",
     href: "#",
     icon: FingerPrintIcon,
   },
@@ -139,7 +139,34 @@ export default function CustomNavBar() {
             >
               <Popover.Panel className="absolute left-0 mr-5 top-full z-10 mt-3 w-screen max-w-full overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
                 <div className="flex flex-row">
-                  <div className="p-4">
+                  <div className="p-2">
+                    {products.map((item) => (
+                      <div
+                        key={item.name}
+                        className="group relative my-2 flex items-center gap-x-2 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
+                      >
+                        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                          <item.icon
+                            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <div className="flex-auto">
+                          <a
+                            href={item.href}
+                            className="block font-semibold text-gray-900"
+                          >
+                            {item.name}
+                            <span className="absolute inset-0" />
+                          </a>
+                          <p className="mt-1 text-gray-600">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="p-2">
                     {products.map((item) => (
                       <div
                         key={item.name}
@@ -166,34 +193,7 @@ export default function CustomNavBar() {
                       </div>
                     ))}
                   </div>
-                  <div className="p-4">
-                    {products.map((item) => (
-                      <div
-                        key={item.name}
-                        className="group relative my-2 flex items-center gap-x-6 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
-                      >
-                        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                          <item.icon
-                            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                            aria-hidden="true"
-                          />
-                        </div>
-                        <div className="flex-auto">
-                          <a
-                            href={item.href}
-                            className="block font-semibold text-gray-900"
-                          >
-                            {item.name}
-                            <span className="absolute inset-0" />
-                          </a>
-                          <p className="mt-1 text-gray-600">
-                            {item.description}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="p-4 rounded-xl border h-full">
+                  <div className="p-2 rounded-xl border h-full">
                     <div className=" py-4 cursor-pointer">
                       <div className="rounded-xl bg-gray-400 p-10">
                         <Image
