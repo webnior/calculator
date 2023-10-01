@@ -5,10 +5,9 @@ import ActionButton from "./ActionButton"
 
 import "../../styles/globals.css"
 
-import TrustedPartnersSection from "./Partner"
-
 import Image from "next/image"
 
+import TrustedPartnersSection from "./Partner"
 
 const Hero: React.FC = () => {
   return (
@@ -39,14 +38,12 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-          <img
-            src="assets/svg/Business_SVG.svg"
-            alt=""
-            className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
-          />
+          <Image src="/hero.svg" alt="" width={600} height={400} />
         </div>
       </div>
-      <TrustedPartnersSection />
+      <div className="mt-10">
+        <TrustedPartnersSection />
+      </div>
     </section>
   )
 }
