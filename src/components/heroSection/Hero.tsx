@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-          <Image src="/hero.svg" alt="" width={600} height={400} />
+          <Image src="/hero.gif" alt="" width={600} height={400} />
         </div>
       </div>
       <div className="mt-10">
