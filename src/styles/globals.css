@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .herosection-heading-text {
-  font-size: 120px;
+  font-size: 4rem;
   color: transparent;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -12,6 +12,15 @@
   background-image: url("/bg.jpg");
   background-size: 120%;
   animation: bg-animation 30s cubic-bezier(0.3, 0, 0.7, 1) infinite;
+}
+
+.herosection-solution-text {
+  color: rgba(31, 116, 186, 0.7);
+  font-family: Anton;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 @keyframes bg-animation {
