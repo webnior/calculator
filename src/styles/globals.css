@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hero section Styling */
 .herosection-heading-text {
   font-size: 4rem;
   color: transparent;
@@ -23,6 +24,16 @@
   line-height: normal;
 }
 
+/* Experience Section Styling */
+.exp-heading {
+  font-family: sans-serif;
+  color: #002d46;
+  font-size: large;
+}
+.exp-card {
+  margin: 0px 0px 20px;
+  padding: 0px 15px;
+}
 @keyframes bg-animation {
   0% {
     background-position: 0% 0%;

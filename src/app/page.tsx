@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useTheme } from "next-themes"
 
+import ExperienceSection from "@/components/Experience/ExperienceSection"
 import Services from "@/components/servicesSection/Services"
 
 import Hero from "../components/heroSection/Hero"
@@ -17,6 +18,7 @@ export default function Home() {
     <main className="">
       <Hero />
       <Services />
+      <ExperienceSection />
     </main>
   )
 }

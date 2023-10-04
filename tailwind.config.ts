@@ -18,6 +18,7 @@ module.exports = {
     extend: {
       colors: {
         partner: "#0F3C5F",
+        technovitablue: "#C7C6F3",
       },
       keyframes: {
         "accordion-down": {
