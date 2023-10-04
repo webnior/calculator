@@ -11,13 +11,13 @@ import TrustedPartnersSection from "./Partner"
 
 const Hero: React.FC = () => {
   return (
-    <section className="dark:bg-white dark:text-black">
-      <div className="container flex mx-auto lg:flex-row flex-col w-screen h-screen item-center mt-10">
+    <section className="bg-rose-50 dark:text-black pt-10">
+      <div className="container flex mx-auto lg:flex-row flex-col w-screen h-screen item-center ">
         <div className="flex flex-col  pl-10 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
           <div>
             <div className=" text-3xl md:text-4xl [text-wrap:balance] bg-clip-text  bg-gradient-to-r from-slate-200/60 to-50% to-slate-200">
               We&apos;re{" "}
-              <span className="text-indigo-500 inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] overflow-hidden">
+              <span className="text-technovitablue inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] overflow-hidden">
                 <ul className="block animate-text-slide-5 text-left leading-tight [&_li]:block">
                   <li>Digital Wonders</li>
                   <li>Tech Enchantment</li>
@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div className="ml-20">
-          <Image src="/hero.gif" alt="" width={650} height={500} />
+          <Image src="/hero.svg" alt="" width={650} height={500} />
         </div>
       </div>
       <div className="mt-10">
