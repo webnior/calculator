@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Anton, Oswald, Poppins } from "next/font/google"
 import Image from "next/image"
 
@@ -10,24 +10,17 @@ interface ImageCardProps {
 
 // Define reusable image card component
 const ImageCard: React.FC<ImageCardProps> = ({ title, imageUrl }) => (
-  <div
-    className={`w-full md:w-${
-      title === "Card Title 3" ? "full" : "1/2"
-    } p-4 relative`}
-  >
-    <div className="bg-white rounded-lg shadow-md relative overflow-hidden">
-      <div className="relative">
-        <Image
-          src={imageUrl}
-          alt={title}
-          className="w-full h-auto"
-          width={400}
-          height={300}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-white opacity-50"></div>
-      </div>
-      <div className="p-4 absolute inset-0 flex flex-col justify-end">
-        <h2 className="text-xl font-semibold text-white">{title}</h2>
+  <div className="w-full md:w-1/2 p-4">
+    <div className="bg-white rounded-lg shadow-md">
+      <Image
+        height={300}
+        width={400}
+        src={imageUrl}
+        alt={title}
+        className="w-full h-auto"
+      />
+      <div className="p-4">
+        <h2 className="text-xl font-semibold">{title}</h2>
         {/* Add content for card */}
       </div>
     </div>
@@ -35,16 +28,25 @@ const ImageCard: React.FC<ImageCardProps> = ({ title, imageUrl }) => (
 )
 
 const Services: React.FC = () => {
+  const scrollRef = useRef<number>(0) // Initialize with 0
   const [activeSection, setActiveSection] = useState<number>(1)
+
+  // Function to scroll to a section
+  const scrollToSection = (sectionNumber: number) => {
+    const section = document.getElementById(`section${sectionNumber}`)
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   useEffect(() => {
     const handleScroll = () => {
-      // Calculate the scroll position relative to each section
+      scrollRef.current = window.scrollY // Update the scroll position
       const sections = [1, 2, 3].map((section) =>
         document.getElementById(`section${section}`)
       )
 
-      const scrollY = window.scrollY
+      const scrollY = scrollRef.current // Use the scroll position from the ref
 
       for (let i = 0; i < sections.length - 1; i++) {
         if (
@@ -88,7 +90,10 @@ const Services: React.FC = () => {
                     ? "bg-blue-500 text-white"
                     : "bg-gray-300"
                 }`}
-                onClick={() => setActiveSection(index + 1)}
+                onClick={() => {
+                  setActiveSection(index + 1)
+                  scrollToSection(index + 1) // Scroll to the selected section
+                }}
               >
                 Section {index + 1}
               </button>
