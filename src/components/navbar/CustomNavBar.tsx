@@ -5,12 +5,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react"
 import {
+  ArrowLongRightIcon,
   ChevronDownIcon,
   PhoneIcon,
   PlayCircleIcon,
 } from "@heroicons/react/20/solid"
 import {
   ArrowPathIcon,
+  ArrowRightOnRectangleIcon,
   Bars3Icon,
   ChartPieIcon,
   CursorArrowRaysIcon,
@@ -138,86 +140,95 @@ export default function CustomNavBar() {
               leaveTo="opacity-0 translate-y-1"
             >
               <Popover.Panel className="absolute left-0 mr-5 top-full z-10 mt-3 w-screen max-w-full overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                <div className="flex flex-row">
-                  <div className="p-2">
-                    {products.map((item) => (
-                      <div
-                        key={item.name}
-                        className="group relative my-2 flex items-center gap-x-2 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
-                      >
-                        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                          <item.icon
-                            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                            aria-hidden="true"
-                          />
-                        </div>
-                        <div className="flex-auto">
-                          <a
-                            href={item.href}
-                            className="block font-semibold text-gray-900"
+                <div className="flex flex-row justify-between">
+                  <div className=" flex flex-col">
+                    <div className="pl-16 pt-6">
+                      <h1 className="text-2xl font-sans font-semibold">
+                        Our Plateforms
+                      </h1>
+                    </div>
+                    <div className="flex flex-row px-10">
+                      <div className="p-2">
+                        {products.map((item) => (
+                          <div
+                            key={item.name}
+                            className="group relative my-2 flex items-center gap-x-2 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
                           >
-                            {item.name}
-                            <span className="absolute inset-0" />
-                          </a>
-                          <p className="mt-1 text-gray-600">
-                            {item.description}
-                          </p>
-                        </div>
+                            <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              <item.icon
+                                className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+                                aria-hidden="true"
+                              />
+                            </div>
+                            <div className="flex-auto">
+                              <a
+                                href={item.href}
+                                className="block font-semibold text-gray-900"
+                              >
+                                {item.name}
+                                <span className="absolute inset-0" />
+                              </a>
+                              <p className="mt-1 text-gray-600">
+                                {item.description}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                  <div className="p-2">
-                    {products.map((item) => (
-                      <div
-                        key={item.name}
-                        className="group relative my-2 flex items-center gap-x-6 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
-                      >
-                        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                          <item.icon
-                            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                            aria-hidden="true"
-                          />
-                        </div>
-                        <div className="flex-auto">
-                          <a
-                            href={item.href}
-                            className="block font-semibold text-gray-900"
+                      <div className="p-2">
+                        {products.map((item) => (
+                          <div
+                            key={item.name}
+                            className="group relative my-2 flex items-center gap-x-6 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
                           >
-                            {item.name}
-                            <span className="absolute inset-0" />
-                          </a>
-                          <p className="mt-1 text-gray-600">
-                            {item.description}
-                          </p>
-                        </div>
+                            <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              <item.icon
+                                className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+                                aria-hidden="true"
+                              />
+                            </div>
+                            <div className="flex-auto">
+                              <a
+                                href={item.href}
+                                className="block font-semibold text-gray-900"
+                              >
+                                {item.name}
+                                <span className="absolute inset-0" />
+                              </a>
+                              <p className="mt-1 text-gray-600">
+                                {item.description}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
-                  <div className="p-2 rounded-xl border h-full">
-                    <div className=" py-4 cursor-pointer">
-                      <div className="rounded-xl bg-gray-400 p-10">
+                  <div className="p-2 flex flex-col justify-around">
+                    <div className="  cursor-pointer max-w-[400px] max-h-[400px]">
+                      <div className="rounded-xl">
                         <Image
                           width={390}
                           height={180}
-                          src="/next.svg"
+                          src="/nav2.webp"
                           alt={"whatever"}
                         />
                       </div>
-                      <h2 className="p-2 font-bold font-[#555]">
-                        GoFynd: The trendiest fashon Marketplace.
+                      <h2 className="py-2 font-bold font-[#555]">
+                        GoFynd : The trendiest fashon marketplace
                       </h2>
                     </div>
-                    <div className=" py-4 cursor-pointer">
-                      <div className="rounded-xl bg-gray-400 p-10">
+                    <div className="  cursor-pointer max-w-[400px] max-h-[400px]">
+                      <div className="rounded-xl">
                         <Image
                           width={390}
                           height={180}
-                          src="/next.svg"
+                          src="/nav3.webp"
                           alt={"whatever"}
                         />
                       </div>
-                      <h2 className="p-2 font-bold font-[#555]">
-                        GoFynd: The trendiest fashon Marketplace.
+                      <h2 className="py-2 font-bold font-[#555]">
+                        ConvertFiles.ai : Convert Image to any format
                       </h2>
                     </div>
                   </div>
@@ -259,88 +270,102 @@ export default function CustomNavBar() {
               leaveTo="opacity-0 translate-y-1"
             >
               <Popover.Panel className="absolute left-0 mr-5 top-full z-10 mt-3 w-screen max-w-full overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                <div className="flex flex-row">
-                  <div className="p-4">
-                    {calculator.map((item) => (
-                      <div
-                        key={item.name}
-                        className="group relative my-2 flex items-center gap-x-6 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
-                      >
-                        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                          <item.icon
-                            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                            aria-hidden="true"
-                          />
-                        </div>
-                        <div className="flex-auto">
-                          <a
-                            href={item.href}
-                            className="block font-semibold text-gray-900"
+                <div className="flex flex-row justify-between">
+                  <div className=" flex flex-col">
+                    <div className="pl-16 pt-6">
+                      <h1 className="text-2xl font-sans font-semibold">
+                        Our Calculators
+                      </h1>
+                    </div>
+                    <div className="flex flex-row px-10">
+                      <div className="p-2">
+                        {calculator.map((item) => (
+                          <div
+                            key={item.name}
+                            className="group relative my-2 flex items-center gap-x-2 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
                           >
-                            {item.name}
-                            <span className="absolute inset-0" />
-                          </a>
-                          <p className="mt-1 text-gray-600">
-                            {item.description}
-                          </p>
-                        </div>
+                            <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              <item.icon
+                                className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+                                aria-hidden="true"
+                              />
+                            </div>
+                            <div className="flex-auto">
+                              <a
+                                href={item.href}
+                                className="block font-semibold text-gray-900"
+                              >
+                                {item.name}
+                                <span className="absolute inset-0" />
+                              </a>
+                              <p className="mt-1 text-gray-600">
+                                {item.description}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                  <div className="p-4">
-                    {calculator.map((item) => (
-                      <div
-                        key={item.name}
-                        className="group relative my-2 flex items-center gap-x-6 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
-                      >
-                        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                          <item.icon
-                            className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                            aria-hidden="true"
-                          />
-                        </div>
-                        <div className="flex-auto">
-                          <a
-                            href={item.href}
-                            className="block font-semibold text-gray-900"
+                      <div className="p-2">
+                        {calculator.map((item) => (
+                          <div
+                            key={item.name}
+                            className="group relative my-2 flex items-center gap-x-6 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
                           >
-                            {item.name}
-                            <span className="absolute inset-0" />
-                          </a>
-                          <p className="mt-1 text-gray-600">
-                            {item.description}
-                          </p>
-                        </div>
+                            <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                              <item.icon
+                                className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
+                                aria-hidden="true"
+                              />
+                            </div>
+                            <div className="flex-auto">
+                              <a
+                                href={item.href}
+                                className="block font-semibold text-gray-900"
+                              >
+                                {item.name}
+                                <span className="absolute inset-0" />
+                              </a>
+                              <p className="mt-1 text-gray-600">
+                                {item.description}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
-                  <div className="p-4 rounded-xl border h-full">
-                    <div className=" py-4 cursor-pointer">
-                      <div className="rounded-xl bg-gray-400 p-10">
+                  <div className="p-2 flex flex-col justify-between">
+                    <div className="  cursor-pointer max-w-[400px] max-h-[400px]">
+                      <div className="rounded-xl">
                         <Image
                           width={390}
                           height={180}
-                          src="/next.svg"
+                          src="/nav1.webp"
                           alt={"whatever"}
                         />
                       </div>
-                      <h2 className="p-2 font-bold font-[#555]">
-                        GoFynd: The trendiest fashon Marketplace.
+                      <h2 className="py-2 font-bold font-[#555]">
+                        Fynd Store OS
                       </h2>
+
+                      <p>
+                        The ultimate store management platform. Elevate store
+                        experiences for everyone, powered by our cloud-based,
+                        in-store solution. Delight customers, empower store
+                        staff, boost sales, and simplify operations, all through
+                        a mobile app.
+                      </p>
                     </div>
-                    <div className=" py-4 cursor-pointer">
-                      <div className="rounded-xl bg-gray-400 p-10">
-                        <Image
-                          width={390}
-                          height={180}
-                          src="/next.svg"
-                          alt={"whatever"}
+                    <div>
+                      <button className=" flex w-auto gap-2 text-white content-center justify-around bg-[#2f31ac] rounded-full p-2 place-content-center px-5">
+                        <h1 className="text-base text-center">try now</h1>
+                        <ArrowLongRightIcon
+                          className="h-6 w-6 text-white-600 group-hover:text-indigo-600"
+                          aria-hidden="true"
                         />
-                      </div>
-                      <h2 className="p-2 font-bold font-[#555]">
-                        GoFynd: The trendiest fashon Marketplace.
-                      </h2>
+                      </button>
                     </div>
+                    <div></div>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
