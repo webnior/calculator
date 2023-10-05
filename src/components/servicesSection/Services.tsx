@@ -28,32 +28,46 @@ const ImageCard: React.FC<ImageCardProps> = ({ title, imageUrl }) => (
 )
 
 const Services: React.FC = () => {
-  const scrollRef = useRef<number>(0) // Initialize with 0
+  const scrollRef = useRef<number>(0)
   const [activeSection, setActiveSection] = useState<number>(1)
 
-  // Function to scroll to a section
+  const sectionIds = ["section1", "section2", "section3"]
+
   const scrollToSection = (sectionNumber: number) => {
     const section = document.getElementById(`section${sectionNumber}`)
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" })
+      section.scrollIntoView({ behavior: "auto" })
     }
+  }
+
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window
+    return {
+      width,
+      height,
+    }
+  }
+
+  const handleSectionClick = (sectionNumber: number) => {
+    setActiveSection(sectionNumber)
+    scrollToSection(sectionNumber)
   }
 
   useEffect(() => {
     const handleScroll = () => {
-      scrollRef.current = window.scrollY // Update the scroll position
-      const sections = [1, 2, 3].map((section) =>
-        document.getElementById(`section${section}`)
-      )
+      scrollRef.current = window.scrollY
+      const scrollY = scrollRef.current
+      const { innerHeight } = window
 
-      const scrollY = scrollRef.current // Use the scroll position from the ref
+      for (let i = 0; i < sectionIds.length; i++) {
+        const currentSection = document.getElementById(sectionIds[i])
+        const nextSection = document.getElementById(sectionIds[i + 1])
 
-      for (let i = 0; i < sections.length - 1; i++) {
         if (
-          sections[i] &&
-          sections[i + 1] &&
-          scrollY >= sections[i].offsetTop &&
-          scrollY < sections[i + 1].offsetTop
+          (i === sectionIds.length - 1 ||
+            (nextSection && scrollY < nextSection.offsetTop)) &&
+          currentSection &&
+          scrollY >= currentSection.offsetTop
         ) {
           setActiveSection(i + 1)
           break
@@ -72,7 +86,6 @@ const Services: React.FC = () => {
     <section className="bg-white">
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
         <div className="w-3/12 h-screen sticky top-0 hidden lg:block">
-          {/* Buttons for selecting the section */}
           <div className="p-4">
             <div className="text-left mb-16">
               <h1 className="text-6xl font-extrabold font-Impact tracking-tighter hover:tracking-tight duration-500 text-[#0F3C5F]">
@@ -82,7 +95,7 @@ const Services: React.FC = () => {
                 that we provide
               </p>
             </div>
-            {Array.from({ length: 3 }).map((_, index) => (
+            {sectionIds.map((sectionId, index) => (
               <button
                 key={index}
                 className={`block w-full py-2 my-4 rounded-full text-2xl shadow-md ${
@@ -90,29 +103,41 @@ const Services: React.FC = () => {
                     ? "bg-blue-500 text-white"
                     : "bg-gray-300"
                 }`}
-                onClick={() => {
-                  setActiveSection(index + 1)
-                  scrollToSection(index + 1) // Scroll to the selected section
-                }}
+                onClick={() => handleSectionClick(index + 1)}
               >
-                Section {index + 1}
+                {`Section ${index + 1}`}
               </button>
             ))}
           </div>
         </div>
         <div className="w-9/12 overflow-y-auto">
-          {Array.from({ length: 3 }).map((_, index) => (
-            <div className="p-4" key={index} id={`section${index + 1}`}>
-              <h1 className="text-xl font-semibold">
-                Section {index + 1} Content
-              </h1>
-              <div className="flex flex-wrap">
-                <ImageCard title="Card Title 1" imageUrl="/team.jpg" />
-                <ImageCard title="Card Title 2" imageUrl="/team.jpg" />
-                <ImageCard title="Card Title 3" imageUrl="/team.jpg" />
-              </div>
+          {/* Section 1 */}
+          <div className="p-4 h-screen bg-violet-300" id="section1">
+            <h1 className="text-xl font-semibold">{`Section 1 Content`}</h1>
+            <div className="flex flex-wrap">
+              <ImageCard title={`Card Title 1`} imageUrl="/team.jpg" />
+              <ImageCard title={`Card Title 2`} imageUrl="/team.jpg" />
+              <ImageCard title={`Card Title 3`} imageUrl="/team.jpg" />
             </div>
-          ))}
+          </div>
+          {/* Section 2 */}
+          <div className="p-4 h-screen bg-pink-400" id="section2">
+            <h1 className="text-xl font-semibold">{`Section 2 Content`}</h1>
+            <div className="flex flex-wrap">
+              <ImageCard title={`Card Title 1`} imageUrl="/team.jpg" />
+              <ImageCard title={`Card Title 2`} imageUrl="/team.jpg" />
+              <ImageCard title={`Card Title 3`} imageUrl="/team.jpg" />
+            </div>
+          </div>
+          {/* Section 3 */}
+          <div className="p-4 h-screen bg-purple-300" id="section3">
+            <h1 className="text-xl font-semibold">{`Section 3 Content`}</h1>
+            <div className="flex flex-wrap">
+              <ImageCard title={`Card Title 1`} imageUrl="/team.jpg" />
+              <ImageCard title={`Card Title 2`} imageUrl="/team.jpg" />
+              <ImageCard title={`Card Title 3`} imageUrl="/team.jpg" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
