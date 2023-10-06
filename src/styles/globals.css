@@ -45,3 +45,59 @@
     background-position: 0% 0%;
   }
 }
+
+/* Service section */
+
+.service-section1-card1 {
+  width: 424px;
+  height: 300px;
+  border-radius: 12px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 0.01%,
+      #3193ca 100%
+    ),
+    url("https://s3-alpha-sig.figma.com/img/b113/e162/c219f2f997fcb619882ce4d6e7611e63?Expires=1697414400&Signature=PGHE5iX~aswKAGb7sGvzWHfRAlKIkDclTmROFA6WKmv-menCmRATgbeuyueHIipYXD9HJJNWr8e36fRub71FxLMWMEfZhLJT20aDPszMSygK3Z9YJLQqYKF3Q3uR~y5Rj-wvAO6txOB~ermdbW1u8Eq~eEfPLc~0GY3rjoCuM~mHIIkpiiBBfWDOIr4BqutmCAeRR9fOUJ1lFT8jmTaOp1N28tyQUdION-MULxdMj-NmnVBMF3ROlRSUodU5gA0y~3lomXnV5CmGdoainJMEassTkx2XP2VCI90q~-DByAu0rNG63iKrksllLwzR2eUUieA5e4jshcyfEAvGRD0cwA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"),
+    lightgray 0px -1.457px / 100% 101.691% no-repeat;
+  color: #fff;
+  text-align: center;
+  font-family: Anton;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  font-weight: 700;
+  line-height: normal;
+  position: relative;
+}
+.bottom-text {
+  position: absolute;
+  bottom: 10px; /* Position the text 5px from the bottom */
+  left: 0; /* Center the text horizontally within the container */
+  right: 0;
+}
+
+.service-section1-card2 {
+  width: 920px;
+  height: 300px;
+  border-radius: 12px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 0.01%,
+      #3193ca 100%
+    ),
+    url("https://s3-alpha-sig.figma.com/img/b113/e162/c219f2f997fcb619882ce4d6e7611e63?Expires=1697414400&Signature=PGHE5iX~aswKAGb7sGvzWHfRAlKIkDclTmROFA6WKmv-menCmRATgbeuyueHIipYXD9HJJNWr8e36fRub71FxLMWMEfZhLJT20aDPszMSygK3Z9YJLQqYKF3Q3uR~y5Rj-wvAO6txOB~ermdbW1u8Eq~eEfPLc~0GY3rjoCuM~mHIIkpiiBBfWDOIr4BqutmCAeRR9fOUJ1lFT8jmTaOp1N28tyQUdION-MULxdMj-NmnVBMF3ROlRSUodU5gA0y~3lomXnV5CmGdoainJMEassTkx2XP2VCI90q~-DByAu0rNG63iKrksllLwzR2eUUieA5e4jshcyfEAvGRD0cwA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"),
+    lightgray 0px -1.457px / 100% 101.691% no-repeat;
+  color: #fff;
+  text-align: center;
+  font-family: Anton;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  font-weight: 700;
+  line-height: normal;
+  position: relative;
+}
