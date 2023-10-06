@@ -83,7 +83,7 @@ const Services: React.FC = () => {
   }, [])
 
   return (
-    <section className="bg-white">
+    <section className="bg-technovitablue">
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
         <div className="w-3/12 h-screen sticky top-0 hidden lg:block">
           <div className="p-4">
@@ -112,31 +112,56 @@ const Services: React.FC = () => {
         </div>
         <div className="w-9/12 overflow-y-auto">
           {/* Section 1 */}
-          <div className="p-4 h-screen bg-violet-300" id="section1">
-            <h1 className="text-xl font-semibold">{`Section 1 Content`}</h1>
-            <div className="flex flex-wrap">
-              <ImageCard title={`Card Title 1`} imageUrl="/team.jpg" />
-              <ImageCard title={`Card Title 2`} imageUrl="/team.jpg" />
-              <ImageCard title={`Card Title 3`} imageUrl="/team.jpg" />
+          <div className="p-4 " id="section1">
+            <h1 className="text-center text-5xl mb-7">Ecommerce Services</h1>
+            <div className="grid lg:grid-cols-2 sm:grid-cols-1">
+              <div className="service-section1-card1 ">
+                <h3 className="bottom-text">Account Management</h3>
+              </div>
+              <div className="service-section1-card1 ">
+                <h3 className="bottom-text">Sales Boost</h3>
+              </div>
+              <div className="service-section1-card2 row-span-2 sm:row-span-1 mt-8">
+                <h3 className="bottom-text">Seller Onboarding</h3>
+              </div>
             </div>
           </div>
           {/* Section 2 */}
-          <div className="p-4 h-screen bg-pink-400" id="section2">
-            <h1 className="text-xl font-semibold">{`Section 2 Content`}</h1>
-            <div className="flex flex-wrap">
-              <ImageCard title={`Card Title 1`} imageUrl="/team.jpg" />
-              <ImageCard title={`Card Title 2`} imageUrl="/team.jpg" />
-              <ImageCard title={`Card Title 3`} imageUrl="/team.jpg" />
+          <div className="p-4" id="section2">
+            <h1 className="text-center text-5xl mb-7">
+              Software Development Zone
+            </h1>
+
+            <div className="grid lg:grid-cols-2 sm:grid-cols-1">
+              <div className="service-section1-card1 row-span-2 sm:row-span-1">
+                <h3 className="bottom-text">Website Development</h3>
+              </div>
+              <div className="service-section1-card1 ">
+                <h3 className="bottom-text">App Development</h3>
+              </div>
+              <div className="service-section1-card1 ">
+                <h3 className="bottom-text">Search Engine Optimization</h3>
+              </div>
+              <div className="service-section1-card1 row-span-2 sm:row-span-1">
+                <h3 className="bottom-text">Graphic Designing </h3>
+              </div>
+              <div className="service-section1-card1 row-span-2 sm:row-span-1 ">
+                <h3 className="bottom-text">Digital Marketing</h3>
+              </div>
+              <div className="service-section1-card1 ">
+                <h3 className="bottom-text">Sales Boost</h3>
+              </div>
             </div>
           </div>
           {/* Section 3 */}
-          <div className="p-4 h-screen bg-purple-300" id="section3">
-            <h1 className="text-xl font-semibold">{`Section 3 Content`}</h1>
-            <div className="flex flex-wrap">
-              <ImageCard title={`Card Title 1`} imageUrl="/team.jpg" />
-              <ImageCard title={`Card Title 2`} imageUrl="/team.jpg" />
-              <ImageCard title={`Card Title 3`} imageUrl="/team.jpg" />
-            </div>
+          <div className="p-4 relative mt-10 pt-5" id="section3">
+            <h1 className="text-center text-5xl mb-7">Technovita Studio</h1>
+            <Image
+              src="/serviceStudio.svg"
+              alt="Technovita Photoshoot Studio"
+              width={1000}
+              height={1000}
+            />
           </div>
         </div>
       </div>
