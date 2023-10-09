@@ -3,8 +3,6 @@
 import { useState } from "react"
 import { useTheme } from "next-themes"
 
-import { CalculatorForm } from "@/components/calculator/Form"
-
 type Theme = "light" | "dark"
 
 export default function Home() {
@@ -12,9 +10,8 @@ export default function Home() {
   const { setTheme } = useTheme()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-item-start p-24 dark:bg-black dark:text-white">
-      <button>Calculator page</button>
-      <CalculatorForm />
+    <main className="flex min-h-screen flex-col items-center justify-between p-24 dark:bg-black dark:text-white">
+      <button>Calculator page/ D-Mart</button>
     </main>
   )
 }

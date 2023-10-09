@@ -33,7 +33,7 @@ const calculator = [
   {
     name: "Flipkart",
     description: "Speak directly to your customers",
-    href: "#",
+    href: "/calculator",
     icon: CursorArrowRaysIcon,
   },
   {
