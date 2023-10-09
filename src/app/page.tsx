@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useTheme } from "next-themes"
 
+import Divider from "@/components/divider"
 import ExperienceSection from "@/components/Experience/ExperienceSection"
 import Services from "@/components/servicesSection/Services"
 
@@ -18,7 +19,9 @@ export default function Home() {
     <main className="">
       <Hero />
       <Services />
+      <Divider />
       <ExperienceSection />
+      <Divider />
     </main>
   )
 }
