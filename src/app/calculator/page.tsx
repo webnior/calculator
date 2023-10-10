@@ -12,8 +12,7 @@ export default function Home() {
   const { setTheme } = useTheme()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-item-start p-24 dark:bg-black dark:text-white">
-      <button>Calculator page</button>
+    <main className="min-h-screen px-8 dark:bg-black dark:text-white">
       <CalculatorForm />
     </main>
   )
