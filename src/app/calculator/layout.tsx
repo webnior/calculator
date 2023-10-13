@@ -24,7 +24,7 @@ export default function RootLayout({
       link: "/calculator/amazon",
     },
     {
-      name: "Mintra",
+      name: "Myntra",
       link: "/calculator/mintra",
     },
     {
@@ -38,7 +38,7 @@ export default function RootLayout({
   ]
   return (
     <div className={`${inter.className} flex flex-row container px-0 h-screen`}>
-      <div className="border-2 w-64 justify-start">
+      <div className="border-2 w-64 justify-start hidden md:block">
         <div className="text-center my-8 font-bold text-2xl text-yellow-900">
           <Link href={`/calculator/`}> Calculators</Link>
         </div>
@@ -58,7 +58,7 @@ export default function RootLayout({
         </nav>
       </div>
       <div className="flex-1">{children}</div>
-      <div className="w-64 justify-end text-right border-2 border-spacing-1">
+      <div className="w-64 justify-end text-right border-2 border-spacing-1 hidden lg:block">
         right side bar
       </div>
     </div>
