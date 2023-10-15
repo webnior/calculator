@@ -59,7 +59,19 @@ const formSchema = z.object({
 })
 
 export function CalculatorForm() {
-  const [response, setResponse] = useState<{ totalFees: number; gst: number }>()
+  const [response, setResponse] = useState<{
+    totalFees: number
+    gst: number
+    totalFlipkartFee: number
+    fixedFee: number
+    commissionRate: number
+    collectionFee: number
+    shippingFee: number
+    sellingPrice: number
+    netMargin: number
+    netMarginPercentage: number
+    deductionMargin: number
+  }>()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -295,9 +307,10 @@ export function CalculatorForm() {
       </Form>
       {response && (
         <>
-          <Table>
-            <TableCaption>Detailed Analysis.</TableCaption>
-            {/* <TableHeader>
+          <div className="mv-10">
+            <Table>
+              <TableCaption>Detailed Analysis.</TableCaption>
+              {/* <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">Invoice</TableHead>
                 <TableHead>Status</TableHead>
@@ -305,21 +318,80 @@ export function CalculatorForm() {
                 <TableHead className="text-right">Amount</TableHead>
               </TableRow>
             </TableHeader> */}
-            <TableBody>
-              <TableRow>
-                <TableCell className="font-medium">Total Fees</TableCell>
-                <TableCell className="text-right">
-                  {response.totalFees}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">GST Fees</TableCell>
-                <TableCell className="text-right">
-                  {Math.round(response.gst * 100) / 100}
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">Total Fees</TableCell>
+                  <TableCell className="text-right">
+                    {response.totalFees}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">GST Fees</TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.gst * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Total Flipkart Fees
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.totalFlipkartFee * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Fixed Fees</TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.fixedFee * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Commission Fees</TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.commissionRate * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Collection Fees</TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.collectionFee * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Shipping Fees</TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.shippingFee * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Selling Price</TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.sellingPrice * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Net Margin</TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.netMargin * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Net Margin %</TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.netMarginPercentage * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    Deduction Fees %
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.deductionMargin * 100) / 100}
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
         </>
       )}
     </>

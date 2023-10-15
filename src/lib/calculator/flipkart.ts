@@ -98,84 +98,73 @@ function calculateCollectionFee(sellingPrice: number): number {
   return fee
 }
 
-function calculateShippingFee(weight: number, destinationZone: string): number {
-  let shippingFee: number = 0
-
-  switch (true) {
-    case weight <= 0.5:
-      shippingFee =
-        destinationZone === "Intracity"
-          ? 47
-          : destinationZone === "Intrazone"
-          ? 54
-          : 68
-      break
-    case weight <= 1:
-      shippingFee =
-        destinationZone === "Intracity"
-          ? 4
-          : destinationZone === "Intrazone"
-          ? 19
-          : 26
-      break
-    case weight <= 1.5:
-      shippingFee =
-        destinationZone === "Intracity"
-          ? 13
-          : destinationZone === "Intrazone"
-          ? 17
-          : 28
-      break
-    case weight <= 2:
-      shippingFee =
-        destinationZone === "Intracity"
-          ? 10
-          : destinationZone === "Intrazone"
-          ? 18
-          : 22
-      break
-    case weight <= 2.5:
-      shippingFee =
-        destinationZone === "Intracity"
-          ? 8
-          : destinationZone === "Intrazone"
-          ? 11
-          : 17
-      break
-    case weight <= 3:
-      shippingFee =
-        destinationZone === "Intracity"
-          ? 8
-          : destinationZone === "Intrazone"
-          ? 11
-          : 17
-      break
-    case weight <= 4:
-      shippingFee =
-        destinationZone === "Intracity"
-          ? 7
-          : destinationZone === "Intrazone"
-          ? 10
-          : 16
-      break
-    case weight <= 5:
-      shippingFee =
-        destinationZone === "Intracity"
-          ? 7
-          : destinationZone === "Intrazone"
-          ? 10
-          : 16
-      break
-    default:
-      shippingFee = 0 // Default fee if weight exceeds 5 kgs
+function calculateShippingFee(weight: number, shippingZones: string): number {
+  let shippingFee = 0
+  weight = weight / 1000
+  if (shippingZones.toLowerCase() === "local") {
+    if (weight < 0.5) {
+      shippingFee = 47
+    } else if (weight <= 1) {
+      shippingFee = 51
+    } else if (weight <= 1.5) {
+      shippingFee = 64
+    } else if (weight <= 2) {
+      shippingFee = 74
+    } else if (weight <= 2.5) {
+      shippingFee = 82
+    } else if (weight <= 3) {
+      shippingFee = 90
+    } else if (weight <= 4) {
+      shippingFee = 97
+    } else if (weight <= 5) {
+      shippingFee = 104
+    } else {
+      weight = weight - 5
+      shippingFee = 104 + 7 * weight
+    }
+  } else if (shippingZones.toLowerCase() === "regional") {
+    if (weight < 0.5) {
+      shippingFee = 54
+    } else if (weight <= 1) {
+      shippingFee = 73
+    } else if (weight <= 1.5) {
+      shippingFee = 90
+    } else if (weight <= 2) {
+      shippingFee = 108
+    } else if (weight <= 2.5) {
+      shippingFee = 119
+    } else if (weight <= 3) {
+      shippingFee = 130
+    } else if (weight <= 4) {
+      shippingFee = 140
+    } else if (weight <= 5) {
+      shippingFee = 150
+    } else {
+      weight = weight - 5
+      shippingFee = 150 + 10 * weight
+    }
+  } else {
+    if (weight < 0.5) {
+      shippingFee = 68
+    } else if (weight <= 1) {
+      shippingFee = 94
+    } else if (weight <= 1.5) {
+      shippingFee = 112
+    } else if (weight <= 2) {
+      shippingFee = 144
+    } else if (weight <= 2.5) {
+      shippingFee = 161
+    } else if (weight <= 3) {
+      shippingFee = 178
+    } else if (weight <= 4) {
+      shippingFee = 194
+    } else if (weight <= 5) {
+      shippingFee = 210
+    } else {
+      weight = weight - 5
+      shippingFee = 210 + 16 * weight
+    }
   }
-
-  if (weight > 0.5 && weight <= 3) {
-    shippingFee = (weight / 0.5) * shippingFee
-  } else if (weight > 3) {
-    shippingFee = weight * shippingFee
-  }
-
   return shippingFee
 }
 
@@ -185,7 +174,19 @@ export default function calculateTotalFlipkartFeesAndGST(args: {
   isFBF: boolean
   productCategory: string
   shippingZones: string
-}): { totalFees: number; gst: number } {
+}): {
+  totalFees: number
+  gst: number
+  fixedFee: number
+  commissionRate: number
+  collectionFee: number
+  shippingFee: number
+  sellingPrice: number
+  totalFlipkartFee: number
+  netMargin: number
+  netMarginPercentage: number
+  deductionMargin: number
+} {
   const { sellingPrice, productWeight, isFBF, productCategory, shippingZones } =
     args
   // Define fee rates based on the provided information
@@ -209,8 +210,24 @@ export default function calculateTotalFlipkartFeesAndGST(args: {
 
   // Calculate GST on Total Flipkart fees
   const gst: number = (totalFees / 100) * 18
+  const totalFlipkartFee: number = totalFees + gst
+  const netMargin: number = sellingPrice - totalFlipkartFee
+  const netMarginPercentage: number = (netMargin / sellingPrice) * 100
+  const deductionMargin: number = 100 - netMarginPercentage
 
-  return { totalFees, gst }
+  return {
+    totalFees,
+    gst,
+    fixedFee,
+    commissionRate,
+    collectionFee,
+    shippingFee,
+    sellingPrice,
+    totalFlipkartFee,
+    netMargin,
+    netMarginPercentage,
+    deductionMargin,
+  }
 }
 
 export const mapProductCategory = (catNum: string): string => {
