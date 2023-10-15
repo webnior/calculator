@@ -1,0 +1,327 @@
+"use client"
+
+import { JSXElementConstructor, ReactElement, useState } from "react"
+import { Calculators } from "@/data/CalculatorData"
+import { zodResolver } from "@hookform/resolvers/zod"
+import {
+  ControllerFieldState,
+  ControllerRenderProps,
+  FieldValues,
+  useForm,
+  UseFormStateReturn,
+} from "react-hook-form"
+import { GrAmazon } from "react-icons/gr"
+import { SiFlipkart } from "react-icons/si"
+import { TbBrandShopee } from "react-icons/tb"
+import * as z from "zod"
+
+import { Button } from "@/components/ui/new-york/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/new-york/card"
+import { Input } from "@/components/ui/new-york/input"
+import { Label } from "@/components/ui/new-york/label"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/components/ui/new-york/radio-group"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/new-york/select"
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+import { Form, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
+
+const formSchema = z.object({
+  plateform: z.enum(["flipkart", "amazon", "myntra", "shopify", "dmart"]),
+  fbf: z.enum(["fbf", "nfbf"]),
+  szone: z.enum(["local", "regional", "national"]),
+  pcat: z.string(),
+  sellPrice: z.string(),
+  weight: z.string(),
+})
+
+export function CalculatorForm() {
+  const [response, setResponse] = useState<{ totalFees: number; gst: number }>()
+
+  // 1. Define your form.
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      plateform: "flipkart",
+      sellPrice: "100",
+      weight: "100",
+    },
+  })
+
+  // 2. Define a submit handler.
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    // make api call to backend with value comiing form frontend
+
+    const api_url = "/api/calculator"
+
+    const api_req_options = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(values),
+    }
+
+    const res = await (await fetch(api_url, api_req_options)).json()
+
+    setResponse(() => res)
+  }
+
+  return (
+    <>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <Card>
+            <CardHeader>
+              <CardTitle>Calculators</CardTitle>
+              <CardDescription>Calculate your bills</CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-6">
+              <FormField
+                control={form.control}
+                name="plateform"
+                render={({ field }) => (
+                  <FormItem>
+                    <RadioGroup
+                      defaultValue={field.value}
+                      className="grid grid-cols-3 gap-4"
+                      onValueChange={field.onChange}
+                    >
+                      <div>
+                        <RadioGroupItem
+                          value="flipkart"
+                          id="flipkart"
+                          className="peer sr-only"
+                        />
+                        <Label
+                          htmlFor="flipkart"
+                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                        >
+                          <span className="flex w-8 h-8 justify-center">
+                            <SiFlipkart className="w-6 h-6" />
+                          </span>
+                          Flipkart
+                        </Label>
+                      </div>
+                      <div>
+                        <RadioGroupItem
+                          value="amazon"
+                          id="amazon"
+                          className="peer sr-only"
+                        />
+                        <Label
+                          htmlFor="amazon"
+                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                        >
+                          <span className="flex w-8 h-8 justify-center">
+                            <GrAmazon className="w-6 h-6" />
+                          </span>
+                          Amazon
+                        </Label>
+                      </div>
+                      <div>
+                        <RadioGroupItem
+                          value="shopsy"
+                          id="shopsy"
+                          className="peer sr-only"
+                        />
+                        <Label
+                          htmlFor="shopsy"
+                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                        >
+                          <span className="flex w-8 h-8 justify-center">
+                            <TbBrandShopee className="w-6 h-6" />
+                          </span>
+                          Shopsy
+                        </Label>
+                      </div>
+                    </RadioGroup>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="grid grid-cols-4 gap-4">
+                <FormField
+                  control={form.control}
+                  name="fbf"
+                  render={({ field }) => (
+                    <FormItem className="grid gap-2 col-span-1">
+                      <Label htmlFor="fbf">FBF</Label>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <SelectTrigger id="fbf">
+                          <SelectValue placeholder="None" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="fbf">FBF</SelectItem>
+                          <SelectItem value="nfbf">NFBF</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="szone"
+                  render={({ field }) => (
+                    <FormItem className="grid gap-2 col-span-1">
+                      <Label htmlFor="szone">Shipping Zone</Label>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <SelectTrigger id="szone">
+                          <SelectValue placeholder="None" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="local">Local</SelectItem>
+                          <SelectItem value="regional">Regional</SelectItem>
+                          <SelectItem value="national">National</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="pcat"
+                  render={({ field }) => (
+                    <FormItem className="grid gap-2 col-span-2">
+                      <Label htmlFor="pcat">Product Category</Label>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <SelectTrigger id="pcat">
+                          <SelectValue placeholder="None" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="1">
+                            Clothing &amp; Accessories
+                          </SelectItem>
+                          <SelectItem value="2">
+                            Food &amp; Nutrition
+                          </SelectItem>
+                          <SelectItem value="3">
+                            Kitchen Cookware &amp; Serveware
+                          </SelectItem>
+                          <SelectItem value="4">Edible Oil</SelectItem>
+                          <SelectItem value="5">Health &amp; Beauty</SelectItem>
+                          <SelectItem value="6">Footwear</SelectItem>
+                          <SelectItem value="7">
+                            Painting &amp; Posters
+                          </SelectItem>
+                          <SelectItem value="8">
+                            Artificial Jewellery
+                          </SelectItem>
+                          <SelectItem value="9">Soap</SelectItem>
+                          <SelectItem value="10">Cosmetic</SelectItem>
+                          <SelectItem value="11">
+                            Health &amp; Wellness
+                          </SelectItem>
+                          <SelectItem value="12">
+                            Clothing &amp; Apparels
+                          </SelectItem>
+                          <SelectItem value="13">Home &amp; Kitchen</SelectItem>
+                          <SelectItem value="14">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <FormField
+                control={form.control}
+                name="sellPrice"
+                render={({ field }) => (
+                  <FormItem className="grid gap-2">
+                    <Label htmlFor="price">Selling Price</Label>
+                    <Input id="price" placeholder="&#x20B9;" {...field} />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="weight"
+                render={({ field }) => (
+                  <FormItem className="grid gap-2">
+                    <Label htmlFor="weight">Weight (gram) </Label>
+                    <Input id="weight" placeholder="gm" {...field} />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full" type="submit">
+                Calculate
+              </Button>
+            </CardFooter>
+          </Card>
+        </form>
+      </Form>
+      {response && (
+        <>
+          <Table>
+            <TableCaption>Detailed Analysis.</TableCaption>
+            {/* <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">Invoice</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Method</TableHead>
+                <TableHead className="text-right">Amount</TableHead>
+              </TableRow>
+            </TableHeader> */}
+            <TableBody>
+              <TableRow>
+                <TableCell className="font-medium">Total Fees</TableCell>
+                <TableCell className="text-right">
+                  {response.totalFees}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="font-medium">GST Fees</TableCell>
+                <TableCell className="text-right">
+                  {Math.round(response.gst * 100) / 100}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </>
+      )}
+    </>
+  )
+}

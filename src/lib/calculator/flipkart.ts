@@ -179,13 +179,15 @@ function calculateShippingFee(weight: number, destinationZone: string): number {
   return shippingFee
 }
 
-export default function calculateTotalFlipkartFeesAndGST(
-  sellingPrice: number,
-  productWeight: number,
-  isFBF: boolean,
-  productCategory: string,
+export default function calculateTotalFlipkartFeesAndGST(args: {
+  sellingPrice: number
+  productWeight: number
+  isFBF: boolean
+  productCategory: string
   shippingZones: string
-): { totalFees: number; gst: number } {
+}): { totalFees: number; gst: number } {
+  const { sellingPrice, productWeight, isFBF, productCategory, shippingZones } =
+    args
   // Define fee rates based on the provided information
   const fixedFee: number = calculateFixedFee(sellingPrice, isFBF)
 
@@ -209,4 +211,25 @@ export default function calculateTotalFlipkartFeesAndGST(
   const gst: number = (totalFees / 100) * 18
 
   return { totalFees, gst }
+}
+
+export const mapProductCategory = (catNum: string): string => {
+  const map = new Map<string, string>([
+    ["1", "clothing & accessories"],
+    ["2", "food & nutrition"],
+    ["3", "kitchen cookware & serveware"],
+    ["4", "edible oil"],
+    ["5", "health & beauty"],
+    ["6", "footwear"],
+    ["7", "painting & posters"],
+    ["8", "artificial jewelry"],
+    ["9", "soap"],
+    ["10", "cosmetic"],
+    ["11", "health & wellness"],
+    ["12", "clothing & apparels"],
+    ["13", "home & kitchen"],
+    ["14", "other"],
+  ])
+
+  return map.get(catNum) || "not found"
 }
