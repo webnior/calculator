@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { FC, useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
 interface TrustedPartnerProps {
@@ -29,8 +29,8 @@ const TrustedPartner: React.FC<TrustedPartnerProps> = ({
   )
 }
 
-const CardAnimation = () => {
-  const currentCardRef = useRef(null)
+const CardAnimation: FC = () => {
+  const currentCardRef = useRef<HTMLDivElement | null>(null)
   const cardContent = ["Card 1 Content", "Card 2 Content", "Card 3 Content"]
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -41,25 +41,25 @@ const CardAnimation = () => {
 
   // Use useEffect to add and remove the animation class
   useEffect(() => {
-    const cardElement = currentCardRef
+    const cardElement = currentCardRef.current
 
     const animationIterationHandler = () => {
-      cardElement.classList.remove("card-animation")
+      cardElement?.classList.remove("card-animation")
       replaceCard()
       // Adding a slight delay before re-triggering the animation
       setTimeout(() => {
-        cardElement.classList.add("card-animation")
+        cardElement?.classList.add("card-animation")
       }, 100)
     }
 
-    cardElement.addEventListener(
+    cardElement?.addEventListener(
       "animationiteration",
       animationIterationHandler
     )
 
     // Cleanup: Remove the event listener when the component unmounts
     return () => {
-      cardElement.removeEventListener(
+      cardElement?.removeEventListener(
         "animationiteration",
         animationIterationHandler
       )
