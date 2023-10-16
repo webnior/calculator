@@ -3,11 +3,10 @@
 import { useState } from "react"
 import { useTheme } from "next-themes"
 
-import Divider from "@/components/divider"
+import Divider from "@/components/Divider"
 import ExperienceSection from "@/components/Experience/ExperienceSection"
+import Hero from "@/components/heroSection/Hero"
 import Services from "@/components/servicesSection/Services"
-
-import Hero from "../components/heroSection/Hero"
 
 type Theme = "light" | "dark"
 

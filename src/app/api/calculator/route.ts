@@ -7,15 +7,51 @@ export async function POST(request: Request) {
     await request.json()
   switch (plateform) {
     case "flipkart": {
-      const { totalFees, gst } = flipkartCalculator({
+      const {
+        totalFees,
+        gst,
+        totalFlipkartFee,
+        sellingPrice,
+        fixedFee,
+        commissionRate,
+        collectionFee,
+        shippingFee,
+        netMargin,
+        netMarginPercentage,
+        deductionMargin,
+      } = flipkartCalculator({
         sellingPrice: parseInt(sellPrice),
         productWeight: parseInt(weight),
         isFBF: fbf === "fbf",
         productCategory: mapProductCategory(pcat),
         shippingZones: szone,
       })
-      console.log({ totalFees, gst })
-      return Response.json({ totalFees, gst })
+      console.log({
+        sellingPrice,
+        fixedFee,
+        commissionRate,
+        collectionFee,
+        shippingFee,
+        netMargin,
+        netMarginPercentage,
+        deductionMargin,
+        totalFees,
+        gst,
+        totalFlipkartFee,
+      })
+      return Response.json({
+        sellingPrice,
+        fixedFee,
+        commissionRate,
+        collectionFee,
+        shippingFee,
+        netMargin,
+        netMarginPercentage,
+        deductionMargin,
+        totalFees,
+        gst,
+        totalFlipkartFee,
+      })
     }
     default: {
       return Response.json({ error: "Plateform Type not supported" })
