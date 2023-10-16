@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
-
-import calculateTotalFlipkartFeesAndGST from "@/lib/calculator/flipkart" // Import your function from the correct location
+import { flipkartCalculator } from "@/lib"
 
 export default function FlipkartCalculator() {
   const [totalFeesAndGST, setTotalFeesAndGST] = useState<{
@@ -16,13 +15,13 @@ export default function FlipkartCalculator() {
     const productCategory: string = "juicerMixerGrinder"
     const shippingZones: string = "Interzone"
 
-    const result = calculateTotalFlipkartFeesAndGST(
+    const result = flipkartCalculator({
       sellingPrice,
       productWeight,
       isFBF,
       productCategory,
-      shippingZones
-    )
+      shippingZones,
+    })
 
     setTotalFeesAndGST(result)
   }, [])
