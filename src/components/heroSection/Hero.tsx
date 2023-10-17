@@ -9,9 +9,10 @@ import Image from "next/image"
 
 import TrustedPartnersSection from "./Partner"
 
+// bg-rose-50
 const Hero: React.FC = () => {
   return (
-    <section className="bg-rose-50 dark:text-black pt-10">
+    <section className="dark:text-black pt-10">
       <div className="container flex mx-auto lg:flex-row flex-col w-screen h-screen item-center ">
         <div className="flex flex-col  pl-10 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
           <div>
@@ -41,10 +42,10 @@ const Hero: React.FC = () => {
           </div>
         </div>
         <div className="ml-20">
-          <Image src="/hero.svg" alt="" width={650} height={500} />
+          <Image src="/hero.gif" alt="" width={650} height={500} />
         </div>
       </div>
-      <div className="mt-10">
+      <div className="mt-1">
         <TrustedPartnersSection />
       </div>
     </section>

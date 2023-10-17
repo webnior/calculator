@@ -81,9 +81,9 @@ const Services: React.FC = () => {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
-
+  // className="bg-technovitablue" below section css
   return (
-    <section className="bg-technovitablue">
+    <section>
       <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
         <div className="w-3/12 h-screen sticky top-0 hidden lg:block">
           <div className="p-4">
@@ -100,12 +100,12 @@ const Services: React.FC = () => {
                 key={index}
                 className={`block w-full py-2 my-4 rounded-full text-2xl shadow-md ${
                   activeSection === index + 1
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-300"
+                    ? "service_scroll_button_active text-white"
+                    : "service_scroll_button"
                 }`}
                 onClick={() => handleSectionClick(index + 1)}
               >
-                {`Section ${index + 1}`}
+                {`${sectionId}`}
               </button>
             ))}
           </div>
@@ -113,8 +113,15 @@ const Services: React.FC = () => {
         <div className="w-9/12 overflow-y-auto">
           {/* Section 1 */}
           <div className="p-4 " id="section1">
-            <h1 className="text-center text-5xl mb-7">Ecommerce Services</h1>
-            <div className="grid lg:grid-cols-2 sm:grid-cols-1">
+            <div className="flex justify-end">
+              <Image
+                src="/softwareSvg.svg"
+                alt="Technovita Photoshoot Studio"
+                width={700}
+                height={700}
+              />
+            </div>
+            {/* <div className="grid lg:grid-cols-2 sm:grid-cols-1">
               <div className="service-section1-card1 ">
                 <h3 className="bottom-text">Account Management</h3>
               </div>
@@ -124,15 +131,22 @@ const Services: React.FC = () => {
               <div className="service-section1-card2 row-span-2 sm:row-span-1 mt-8">
                 <h3 className="bottom-text">Seller Onboarding</h3>
               </div>
-            </div>
+            </div> */}
           </div>
           {/* Section 2 */}
           <div className="p-4" id="section2">
-            <h1 className="text-center text-5xl mb-7">
+            {/* <h1 className="text-center text-5xl mb-7">
               Software Development Zone
-            </h1>
-
-            <div className="grid lg:grid-cols-2 sm:grid-cols-1">
+            </h1> */}
+            <div className="flex justify-end">
+              <Image
+                src="/softwareSvg.svg"
+                alt="Technovita Photoshoot Studio"
+                width={700}
+                height={700}
+              />
+            </div>
+            {/* <div className="grid lg:grid-cols-2 sm:grid-cols-1">
               <div className="service-section1-card1 row-span-2 sm:row-span-1">
                 <h3 className="bottom-text">Website Development</h3>
               </div>
@@ -151,11 +165,11 @@ const Services: React.FC = () => {
               <div className="service-section1-card1 ">
                 <h3 className="bottom-text">Sales Boost</h3>
               </div>
-            </div>
+            </div> */}
           </div>
           {/* Section 3 */}
           <div className="p-4 relative mt-10 pt-5" id="section3">
-            <h1 className="text-center text-5xl mb-7">Technovita Studio</h1>
+            {/* <h1 className="text-center text-5xl mb-7">Technovita Studio</h1> */}
             <Image
               src="/serviceStudio.svg"
               alt="Technovita Photoshoot Studio"
