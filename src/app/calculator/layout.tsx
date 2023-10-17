@@ -37,7 +37,7 @@ export default function RootLayout({
     },
   ]
   return (
-    <div className={`${inter.className} flex flex-row container px-0 h-screen`}>
+    <div className={`${inter.className} flex flex-row container px-0 `}>
       <div className="border-2 w-64 justify-start hidden md:block">
         <div className="text-center my-8 font-bold text-2xl text-yellow-900">
           <Link href={`/calculator/`}> Calculators</Link>
