@@ -1,5 +1,6 @@
 "use client"
 
+import { error } from "console"
 import { JSXElementConstructor, ReactElement, useState } from "react"
 import { Calculators } from "@/data/CalculatorData"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -50,7 +51,7 @@ import {
 import { Form, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 
 const formSchema = z.object({
-  plateform: z.enum(["flipkart", "amazon", "myntra", "shopify", "dmart"]),
+  plateform: z.enum(["flipkart", "amazon", "myntra", "shopsy", "dmart"]),
   fbf: z.enum(["fbf", "nfbf"]),
   szone: z.enum(["local", "regional", "national"]),
   pcat: z.string(),
@@ -71,7 +72,9 @@ export function CalculatorForm() {
     netMargin: number
     netMarginPercentage: number
     deductionMargin: number
-  }>()
+  } | null>()
+
+  const [error, setError] = useState<string>()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -100,8 +103,13 @@ export function CalculatorForm() {
     }
 
     const res = await (await fetch(api_url, api_req_options)).json()
-
-    setResponse(() => res)
+    if (res.error) {
+      setError(() => res.error)
+      setResponse(() => null)
+    } else {
+      setResponse(() => res)
+      setError(() => "")
+    }
   }
 
   return (
@@ -305,7 +313,12 @@ export function CalculatorForm() {
           </Card>
         </form>
       </Form>
-      {response && (
+      {error && (
+        <h4 className="text-center font-bold p-4 bg-violet-300 text-blue-900">
+          {error}
+        </h4>
+      )}
+      {response && !error && (
         <>
           <div className="mv-10">
             <Table>

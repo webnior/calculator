@@ -1,14 +1,15 @@
-function calculateFixedFee(sellingPrice: number, isFBA: string): number {
+function calculateFixedFee(sellingPrice: number, isFBA: boolean): number {
+  let isFBAin = isFBA ? "fba" : "nfba"
   let fees: number = 0
-  isFBA = isFBA.toLowerCase()
+  isFBAin = isFBAin.toLowerCase()
   if (sellingPrice <= 250) {
-    fees = isFBA === "fba" ? 25 : 3
+    fees = isFBAin === "fba" ? 25 : 3
   } else if (sellingPrice <= 500) {
-    fees = isFBA === "fba" ? 20 : 6
+    fees = isFBAin === "fba" ? 20 : 6
   } else if (sellingPrice <= 1000) {
-    fees = isFBA === "fba" ? 18 : 30
+    fees = isFBAin === "fba" ? 18 : 30
   } else {
-    fees = isFBA === "fba" ? 40 : 56
+    fees = isFBAin === "fba" ? 40 : 56
   }
 
   return fees
@@ -121,72 +122,73 @@ function calculateCommissionFee(
 function calculateShippingFee(
   productWeight: number,
   shippingZone: string,
-  isFBA: string
+  isFBF: boolean
 ): number {
   productWeight = productWeight / 1000
   shippingZone = shippingZone.toLowerCase()
   let shippingFee: number = 0
+  const isFBAin = isFBF ? "fba" : "nfba"
 
   if (shippingZone === "local") {
     if (productWeight <= 0.5) {
-      shippingFee = isFBA === "fba" ? 31 : 44
+      shippingFee = isFBAin === "fba" ? 31 : 44
     } else if (productWeight <= 1) {
-      shippingFee = isFBA === "fba" ? 44 : 57
+      shippingFee = isFBAin === "fba" ? 44 : 57
     } else if (productWeight <= 5) {
-      shippingFee = isFBA === "fba" ? 44 : 57
+      shippingFee = isFBAin === "fba" ? 44 : 57
       shippingFee = shippingFee + Math.ceil(productWeight - 1) * 21
     } else if (productWeight <= 12) {
-      shippingFee = isFBA === "fba" ? 44 : 57
+      shippingFee = isFBAin === "fba" ? 44 : 57
       shippingFee = shippingFee + Math.ceil(productWeight - 1) * 21
       shippingFee = shippingFee + Math.ceil(productWeight - 5) * 12
     } else {
       const fbaHeavy = Math.ceil(productWeight - 12) * 2.5 + 88
       const nfbaHeavy = Math.ceil(productWeight - 12) * 5 + 192
-      shippingFee = isFBA === "fba" ? fbaHeavy : nfbaHeavy
+      shippingFee = isFBAin === "fba" ? fbaHeavy : nfbaHeavy
     }
   } else if (shippingZone === "regional") {
     if (productWeight <= 0.5) {
-      shippingFee = isFBA === "fba" ? 40 : 53
+      shippingFee = isFBAin === "fba" ? 40 : 53
     } else if (productWeight <= 1) {
-      shippingFee = isFBA === "fba" ? 57 : 70
+      shippingFee = isFBAin === "fba" ? 57 : 70
     } else if (productWeight <= 5) {
-      shippingFee = isFBA === "fba" ? 57 : 70
+      shippingFee = isFBAin === "fba" ? 57 : 70
       shippingFee = shippingFee + Math.ceil(productWeight - 1) * 27
     } else if (productWeight <= 12) {
-      shippingFee = isFBA === "fba" ? 57 : 70
+      shippingFee = isFBAin === "fba" ? 57 : 70
       shippingFee = shippingFee + Math.ceil(productWeight - 1) * 27
       shippingFee = shippingFee + Math.ceil(productWeight - 5) * 13
     } else {
       const fbaHeavy = Math.ceil(productWeight - 12) * 2.5 + 88
       const nfbaHeavy = Math.ceil(productWeight - 12) * 5 + 192
-      shippingFee = isFBA === "fba" ? fbaHeavy : nfbaHeavy
+      shippingFee = isFBAin === "fba" ? fbaHeavy : nfbaHeavy
     }
   } else {
     if (productWeight <= 0.5) {
-      shippingFee = isFBA === "fba" ? 61 : 74
+      shippingFee = isFBAin === "fba" ? 61 : 74
     } else if (productWeight <= 1) {
-      shippingFee = isFBA === "fba" ? 86 : 99
+      shippingFee = isFBAin === "fba" ? 86 : 99
     } else if (productWeight <= 5) {
-      shippingFee = isFBA === "fba" ? 86 : 99
+      shippingFee = isFBAin === "fba" ? 86 : 99
       shippingFee = shippingFee + Math.ceil(productWeight - 1) * 33
     } else if (productWeight <= 12) {
-      shippingFee = isFBA === "fba" ? 86 : 99
+      shippingFee = isFBAin === "fba" ? 86 : 99
       shippingFee = shippingFee + Math.ceil(productWeight - 1) * 33
       shippingFee = shippingFee + Math.ceil(productWeight - 5) * 16
     } else {
       const fbaHeavy = Math.ceil(productWeight - 12) * 6 + 177.5
       const nfbaHeavy = Math.ceil(productWeight - 12) * 6 + 371
-      shippingFee = isFBA === "fba" ? fbaHeavy : nfbaHeavy
+      shippingFee = isFBAin === "fba" ? fbaHeavy : nfbaHeavy
     }
   }
 
   return shippingFee
 }
 
-function calculateTotalAmazonFeesAndGST(args: {
+export default function calculateTotalAmazonFeesAndGST(args: {
   sellingPrice: number
   productWeight: number
-  isFBA: string
+  isFBF: boolean
   productCategory: string
   shippingZones: string
 }): {
@@ -202,11 +204,11 @@ function calculateTotalAmazonFeesAndGST(args: {
   netMarginPercentage: number
   deductionMargin: number
 } {
-  const { sellingPrice, productWeight, isFBA, productCategory, shippingZones } =
+  const { sellingPrice, productWeight, isFBF, productCategory, shippingZones } =
     args
 
   // Define fee rates based on the provided information
-  const fixedFee: number = calculateFixedFee(sellingPrice, isFBA)
+  const fixedFee: number = calculateFixedFee(sellingPrice, isFBF)
 
   // Define commission rates for different product categories
   const commissionRate: number = calculateCommissionFee(
@@ -221,7 +223,7 @@ function calculateTotalAmazonFeesAndGST(args: {
   const shippingFee: number = calculateShippingFee(
     productWeight,
     shippingZones,
-    isFBA
+    isFBF
   )
 
   // Calculate Total Amazon fees
