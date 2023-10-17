@@ -210,8 +210,8 @@ function calculateTotalAmazonFeesAndGST(args: {
 
   // Define commission rates for different product categories
   const commissionRate: number = calculateCommissionFee(
-    sellingPrice,
-    productCategory
+    productCategory,
+    sellingPrice
   )
 
   // Calculate collection fee based on payment mode
