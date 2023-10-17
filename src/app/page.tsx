@@ -19,8 +19,6 @@ export default function Home() {
       <Hero />
       <Services />
       <Divider />
-      <ExperienceSection />
-      <Divider />
     </main>
   )
 }

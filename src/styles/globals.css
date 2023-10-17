@@ -7,8 +7,8 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --partnerCard: 0 0% 100%;
+    --partnerCard-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
     --primary: 240 5.9% 10%;
@@ -30,8 +30,8 @@
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --partnerCard: 240 10% 3.9%;
+    --partnerCard-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
@@ -125,6 +125,17 @@
 }
 
 /* Service section */
+.service_scroll_button_active {
+  border: 2px solid #3409c2;
+  background: linear-gradient(92deg, #3409c2 0%, #dd2e44 99.39%);
+  backdrop-filter: blur(20px);
+}
+.service_scroll_button {
+  border: 2px solid #3409c2;
+  background: linear-gradient(92deg, #3409c2 0%, #dd2e44 99.39%);
+  backdrop-filter: blur(20px);
+  opacity: 0.5;
+}
 
 .service-section1-card1 {
   width: 424px;
@@ -178,4 +189,116 @@
   font-weight: 700;
   line-height: normal;
   position: relative;
+}
+
+/*  partner Card Styling */
+.partnerCardWrapper .outer {
+  margin: 80px 0;
+  background-color: #3193ca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partnerCardWrapper .partnerCard {
+  background: #fff;
+  width: 430px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  justify-content: space-between;
+  border-radius: 100px 80px 80px 100px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  animation: animatePartnerCard 15s linear infinite;
+  animation-delay: calc(3s * var(--delay));
+}
+
+/* .outer:hover .partnerCard {
+  animation-play-state: paused;
+} */
+.partnerCardWrapper .partnerCard:last-child {
+  animation-delay: calc(-3s * var(--delay));
+}
+@keyframes animatePartnerCard {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) scale(0.5);
+  }
+  5%,
+  20% {
+    opacity: 0;
+    transform: translateY(100%) scale(0.7);
+  }
+  25%,
+  40% {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0%) scale(1);
+  }
+  45%,
+  60% {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.7);
+  }
+  65%,
+  100% {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.5);
+  }
+}
+.partnerCard .content {
+  display: flex;
+  align-items: center;
+}
+.partnerCardWrapper .partnerCard .img {
+  height: 90px;
+  width: 90px;
+  position: absolute;
+  left: -5px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.partnerCard .img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.partnerCard .details {
+  margin-left: 80px;
+}
+.details span {
+  font-weight: 500;
+  font-size: 18px;
+}
+.details .partnerDescription {
+  font-weight: 300;
+  font-size: 1rem;
+}
+.partnerCard a {
+  text-decoration: none;
+  padding: 7px 18px;
+  border-radius: 25px;
+  color: #fff;
+  background: linear-gradient(92deg, #3409c2 0%, #dd2e44 99.39%);
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+.partnerCard a:hover {
+  transform: scale(0.94);
+}
+
+/* Responsiveness for mobile and tablet */
+
+/* Responsive styles for tablet (e.g., screens up to 768px wide) */
+@media (max-width: 768px) {
+}
+
+/* Responsive styles for mobile (e.g., screens up to 480px wide) */
+@media (max-width: 480px) {
 }
