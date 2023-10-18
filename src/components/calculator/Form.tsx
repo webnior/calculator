@@ -16,6 +16,7 @@ import { SiFlipkart } from "react-icons/si"
 import { TbBrandShopee } from "react-icons/tb"
 import * as z from "zod"
 
+import { ProductCategories } from "@/lib/productCategories"
 import { Button } from "@/components/ui/new-york/button"
 import {
   Card,
@@ -52,8 +53,8 @@ import { Form, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 
 const formSchema = z.object({
   plateform: z.enum(["flipkart", "amazon", "myntra", "shopsy", "dmart"]),
-  fbf: z.enum(["fbf", "nfbf"]),
-  szone: z.enum(["local", "regional", "national"]),
+  fbf: z.enum(["fbf", "nfbf"]).optional(),
+  szone: z.enum(["local", "regional", "national"]).optional(),
   pcat: z.string(),
   sellPrice: z.string(),
   weight: z.string(),
@@ -63,7 +64,7 @@ export function CalculatorForm() {
   const [response, setResponse] = useState<{
     totalFees: number
     gst: number
-    totalFlipkartFee: number
+    totalPlateformFee: number
     fixedFee: number
     commissionRate: number
     collectionFee: number
@@ -82,9 +83,21 @@ export function CalculatorForm() {
     defaultValues: {
       plateform: "flipkart",
       sellPrice: "100",
-      weight: "100",
+      fbf: "fbf",
+      szone: "local",
+      weight: "10",
     },
   })
+
+  function TitleCase(str: string) {
+    return str
+      .toLowerCase()
+      .split(" ")
+      .map(function (word) {
+        return word.charAt(0).toUpperCase() + word.slice(1)
+      })
+      .join(" ")
+  }
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -103,6 +116,7 @@ export function CalculatorForm() {
     }
 
     const res = await (await fetch(api_url, api_req_options)).json()
+    console.log({ res })
     if (res.error) {
       setError(() => res.error)
       setResponse(() => null)
@@ -111,6 +125,8 @@ export function CalculatorForm() {
       setError(() => "")
     }
   }
+
+  const selectedPlateform = form.watch("plateform")
 
   return (
     <>
@@ -166,18 +182,18 @@ export function CalculatorForm() {
                       </div>
                       <div>
                         <RadioGroupItem
-                          value="shopsy"
-                          id="shopsy"
+                          value="myntra"
+                          id="myntra"
                           className="peer sr-only"
                         />
                         <Label
-                          htmlFor="shopsy"
+                          htmlFor="myntra"
                           className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                         >
                           <span className="flex w-8 h-8 justify-center">
                             <TbBrandShopee className="w-6 h-6" />
                           </span>
-                          Shopsy
+                          Myntra
                         </Label>
                       </div>
                     </RadioGroup>
@@ -195,6 +211,7 @@ export function CalculatorForm() {
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
+                        disabled={selectedPlateform === "myntra"}
                       >
                         <SelectTrigger id="fbf">
                           <SelectValue placeholder="None" />
@@ -217,6 +234,7 @@ export function CalculatorForm() {
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
+                        disabled={selectedPlateform === "myntra"}
                       >
                         <SelectTrigger id="szone">
                           <SelectValue placeholder="None" />
@@ -245,34 +263,13 @@ export function CalculatorForm() {
                           <SelectValue placeholder="None" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="1">
-                            Clothing &amp; Accessories
-                          </SelectItem>
-                          <SelectItem value="2">
-                            Food &amp; Nutrition
-                          </SelectItem>
-                          <SelectItem value="3">
-                            Kitchen Cookware &amp; Serveware
-                          </SelectItem>
-                          <SelectItem value="4">Edible Oil</SelectItem>
-                          <SelectItem value="5">Health &amp; Beauty</SelectItem>
-                          <SelectItem value="6">Footwear</SelectItem>
-                          <SelectItem value="7">
-                            Painting &amp; Posters
-                          </SelectItem>
-                          <SelectItem value="8">
-                            Artificial Jewellery
-                          </SelectItem>
-                          <SelectItem value="9">Soap</SelectItem>
-                          <SelectItem value="10">Cosmetic</SelectItem>
-                          <SelectItem value="11">
-                            Health &amp; Wellness
-                          </SelectItem>
-                          <SelectItem value="12">
-                            Clothing &amp; Apparels
-                          </SelectItem>
-                          <SelectItem value="13">Home &amp; Kitchen</SelectItem>
-                          <SelectItem value="14">Other</SelectItem>
+                          {ProductCategories[selectedPlateform].map(
+                            (elem, index) => (
+                              <SelectItem value={elem[0]} key={index}>
+                                {TitleCase(elem[1])}
+                              </SelectItem>
+                            )
+                          )}
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -298,7 +295,11 @@ export function CalculatorForm() {
                 name="weight"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
-                    <Label htmlFor="weight">Weight (gram) </Label>
+                    <Label htmlFor="weight">
+                      {selectedPlateform === "myntra"
+                        ? "Discount (%)"
+                        : "Weight (gram)"}{" "}
+                    </Label>
                     <Input id="weight" placeholder="gm" {...field} />
                     <FormMessage />
                   </FormItem>
@@ -338,12 +339,16 @@ export function CalculatorForm() {
                     {Math.round(response.shippingFee * 100) / 100}
                   </TableCell>
                 </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Collection Fees</TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.collectionFee * 100) / 100}
-                  </TableCell>
-                </TableRow>
+                {selectedPlateform !== "myntra" && (
+                  <TableRow>
+                    <TableCell className="font-medium">
+                      Collection Fees
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {Math.round(response.collectionFee * 100) / 100}
+                    </TableCell>
+                  </TableRow>
+                )}
                 <TableRow>
                   <TableCell className="font-medium">Commission Fees</TableCell>
                   <TableCell className="text-right">
@@ -369,7 +374,7 @@ export function CalculatorForm() {
                     Total Flipkart Fees
                   </TableCell>
                   <TableCell className="text-right">
-                    {Math.round(response.totalFlipkartFee * 100) / 100}
+                    {Math.round(response.totalPlateformFee * 100) / 100}
                   </TableCell>
                 </TableRow>
                 <TableRow>

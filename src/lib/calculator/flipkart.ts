@@ -168,7 +168,7 @@ function calculateShippingFee(weight: number, shippingZones: string): number {
   return shippingFee
 }
 
-export default function calculateTotalFlipkartFeesAndGST(args: {
+export default function calculatetotalPlateformFeesAndGST(args: {
   sellingPrice: number
   productWeight: number
   isFBF: boolean
@@ -182,7 +182,7 @@ export default function calculateTotalFlipkartFeesAndGST(args: {
   collectionFee: number
   shippingFee: number
   sellingPrice: number
-  totalFlipkartFee: number
+  totalPlateformFee: number
   netMargin: number
   netMarginPercentage: number
   deductionMargin: number
@@ -210,8 +210,8 @@ export default function calculateTotalFlipkartFeesAndGST(args: {
 
   // Calculate GST on Total Flipkart fees
   const gst: number = (totalFees / 100) * 18
-  const totalFlipkartFee: number = totalFees + gst
-  const netMargin: number = sellingPrice - totalFlipkartFee
+  const totalPlateformFee: number = totalFees + gst
+  const netMargin: number = sellingPrice - totalPlateformFee
   const netMarginPercentage: number = (netMargin / sellingPrice) * 100
   const deductionMargin: number = 100 - netMarginPercentage
 
@@ -223,7 +223,7 @@ export default function calculateTotalFlipkartFeesAndGST(args: {
     collectionFee,
     shippingFee,
     sellingPrice,
-    totalFlipkartFee,
+    totalPlateformFee,
     netMargin,
     netMarginPercentage,
     deductionMargin,

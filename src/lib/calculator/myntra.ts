@@ -47,13 +47,13 @@ export default function calculateMyntraFee(args: {
 }): {
   sellingPrice: number
   discount: number
-  overallGST: number
+  gst: number
   logisticDeductionFees: number
-  shipmentFees: number
-  fixedFees: number
-  marketPlaceFees: number
-  totalMyntraFees: number
-  netAmountToPay: number
+  shippingFee: number
+  fixedFee: number
+  commissionRate: number
+  totalPlateformFee: number
+  netMargin: number
   netMarginPercentage: number
 } {
   const { MRP, productCategory, tradeDiscount } = args
@@ -65,33 +65,33 @@ export default function calculateMyntraFee(args: {
 
   const marketPlaceFees = calculateCommissionFee(sellingPrice, productCategory)
 
-  const shipmentFees = 77
+  const shipmentFee = 77
 
   const overallGST = sellingPrice * 0.05
 
   const logisticDeductionFees = sellingPrice * 0.1
 
-  const totalMyntraFees =
+  const totalPlateformFee =
     fixedFees +
     overallGST +
     marketPlaceFees +
-    shipmentFees +
+    shipmentFee +
     logisticDeductionFees
 
-  const netAmountToPay = sellingPrice - totalMyntraFees
+  const netAmountToPay = sellingPrice - totalPlateformFee
 
   const netMarginPercentage = (netAmountToPay / sellingPrice) * 100
 
   return {
     sellingPrice,
     discount,
-    overallGST,
+    gst: overallGST,
     logisticDeductionFees,
-    shipmentFees,
-    fixedFees,
-    marketPlaceFees,
-    totalMyntraFees,
-    netAmountToPay,
+    shippingFee: shipmentFee,
+    fixedFee: fixedFees,
+    commissionRate: marketPlaceFees,
+    totalPlateformFee,
+    netMargin: netAmountToPay,
     netMarginPercentage,
   }
 }

@@ -185,7 +185,7 @@ function calculateShippingFee(
   return shippingFee
 }
 
-export default function calculateTotalAmazonFeesAndGST(args: {
+export default function calculatetotalPlateformFeesAndGST(args: {
   sellingPrice: number
   productWeight: number
   isFBF: boolean
@@ -199,7 +199,7 @@ export default function calculateTotalAmazonFeesAndGST(args: {
   collectionFee: number
   shippingFee: number
   sellingPrice: number
-  totalAmazonFee: number
+  totalPlateformFee: number
   netMargin: number
   netMarginPercentage: number
   deductionMargin: number
@@ -232,8 +232,8 @@ export default function calculateTotalAmazonFeesAndGST(args: {
 
   // Calculate GST on Total Amazon fees
   const gst: number = (totalFees / 100) * 18
-  const totalAmazonFee: number = totalFees + gst
-  const netMargin: number = sellingPrice - totalAmazonFee
+  const totalPlateformFee: number = totalFees + gst
+  const netMargin: number = sellingPrice - totalPlateformFee
   const netMarginPercentage: number = (netMargin / sellingPrice) * 100
   const deductionMargin: number = 100 - netMarginPercentage
 
@@ -245,7 +245,7 @@ export default function calculateTotalAmazonFeesAndGST(args: {
     collectionFee,
     shippingFee,
     sellingPrice,
-    totalAmazonFee,
+    totalPlateformFee,
     netMargin,
     netMarginPercentage,
     deductionMargin,
