@@ -333,13 +333,33 @@ export function CalculatorForm() {
             </TableHeader> */}
               <TableBody>
                 <TableRow>
-                  <TableCell className="font-medium">Total Fees</TableCell>
+                  <TableCell className="font-medium">Shipping Fees</TableCell>
                   <TableCell className="text-right">
-                    {response.totalFees}
+                    {Math.round(response.shippingFee * 100) / 100}
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">GST Fees</TableCell>
+                  <TableCell className="font-medium">Collection Fees</TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.collectionFee * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Commission Fees</TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.commissionRate * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Fixed Fees</TableCell>
+                  <TableCell className="text-right">
+                    {Math.round(response.fixedFee * 100) / 100}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">
+                    GST on Marketplace Fees
+                  </TableCell>
                   <TableCell className="text-right">
                     {Math.round(response.gst * 100) / 100}
                   </TableCell>
@@ -353,37 +373,9 @@ export function CalculatorForm() {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell className="font-medium">Fixed Fees</TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.fixedFee * 100) / 100}
+                  <TableCell className="font-medium">
+                    Settelment Amount
                   </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Commission Fees</TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.commissionRate * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Collection Fees</TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.collectionFee * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Shipping Fees</TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.shippingFee * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Selling Price</TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.sellingPrice * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Net Margin</TableCell>
                   <TableCell className="text-right">
                     {Math.round(response.netMargin * 100) / 100}
                   </TableCell>
@@ -392,14 +384,6 @@ export function CalculatorForm() {
                   <TableCell className="font-medium">Net Margin %</TableCell>
                   <TableCell className="text-right">
                     {Math.round(response.netMarginPercentage * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">
-                    Deduction Fees %
-                  </TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.deductionMargin * 100) / 100}
                   </TableCell>
                 </TableRow>
               </TableBody>
