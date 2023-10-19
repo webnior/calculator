@@ -1,3 +1,5 @@
+import { AmazonResponse } from "../types"
+
 function calculateFixedFee(sellingPrice: number, isFBA: boolean): number {
   let isFBAin = isFBA ? "fba" : "nfba"
   let fees: number = 0
@@ -191,19 +193,7 @@ export default function calculatetotalPlateformFeesAndGST(args: {
   isFBF: boolean
   productCategory: string
   shippingZones: string
-}): {
-  totalFees: number
-  gst: number
-  fixedFee: number
-  commissionRate: number
-  collectionFee: number
-  shippingFee: number
-  sellingPrice: number
-  totalPlateformFee: number
-  netMargin: number
-  netMarginPercentage: number
-  deductionMargin: number
-} {
+}): AmazonResponse {
   const { sellingPrice, productWeight, isFBF, productCategory, shippingZones } =
     args
 

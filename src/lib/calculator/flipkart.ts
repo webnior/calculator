@@ -1,3 +1,5 @@
+import { FlipkartResponse } from "../types"
+
 function calculateFixedFee(sellingPrice: number, isFBF: boolean): number {
   let fee: number
 
@@ -174,19 +176,7 @@ export default function calculatetotalPlateformFeesAndGST(args: {
   isFBF: boolean
   productCategory: string
   shippingZones: string
-}): {
-  totalFees: number
-  gst: number
-  fixedFee: number
-  commissionRate: number
-  collectionFee: number
-  shippingFee: number
-  sellingPrice: number
-  totalPlateformFee: number
-  netMargin: number
-  netMarginPercentage: number
-  deductionMargin: number
-} {
+}): FlipkartResponse {
   const { sellingPrice, productWeight, isFBF, productCategory, shippingZones } =
     args
   // Define fee rates based on the provided information

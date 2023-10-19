@@ -3,7 +3,7 @@ export const ProductCategories: {
   amazon: string[][]
   myntra: string[][]
   shopsy: string[][]
-  dmart: string[][]
+  ajio: string[][]
 } = {
   flipkart: [
     ["1", "clothing & accessories"],
@@ -59,6 +59,13 @@ export const ProductCategories: {
     ["13", "home & kitchen"],
     ["14", "other"],
   ],
+  ajio: [
+    ["1", "silver jewellery"],
+    ["2", "silver items"],
+    ["3", "gold and silver coins"],
+    ["4", "fashion jewellery"],
+    ["5", "artificial jewellery"],
+    ["6", "other"],
+  ],
   shopsy: [[]],
-  dmart: [[]],
 }

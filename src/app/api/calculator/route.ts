@@ -1,4 +1,9 @@
-import { amazonCalculator, flipkartCalculator, myntraCalculator } from "@/lib"
+import {
+  ajioCalculator,
+  amazonCalculator,
+  flipkartCalculator,
+  myntraCalculator,
+} from "@/lib"
 
 import { mapProductCategory } from "@/lib/calculator/flipkart"
 
@@ -30,6 +35,15 @@ export async function POST(request: Request) {
         tradeDiscount: parseInt(weight),
       })
       console.log({ myntra: output })
+      return Response.json({ ...output })
+    }
+    case "ajio": {
+      const output = ajioCalculator({
+        MRP: input.sellingPrice,
+        productCategory: pcat,
+        tradeDiscount: parseInt(weight),
+      })
+      console.log({ ajio: output })
       return Response.json({ ...output })
     }
     default: {

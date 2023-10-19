@@ -1,3 +1,5 @@
+import { AjioResponse } from "../types"
+
 function calculateCommissionFee(
   sellingPrice: number,
   productCategory: string
@@ -65,18 +67,7 @@ export default function calculateTotalAjioFeesAndGST(args: {
   MRP: number
   productCategory: string
   tradeDiscount: number
-}): {
-  sellingPrice: number
-  discount: number
-  overallGst: number
-  forwardShipmentCost: number
-  backwardShipmentCost: number
-  marketPlaceFee: number
-  gstReburshment: number
-  totalAjoFees: number
-  netAmountToPay: number
-  netMarginPercentage: number
-} {
+}): AjioResponse {
   const { MRP, productCategory, tradeDiscount } = args
 
   const discount: number = (tradeDiscount * MRP) / 100

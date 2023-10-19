@@ -1,3 +1,5 @@
+import { MyntraResponse } from "../types"
+
 function calculateCommissionFee(
   sellingPrice: number,
   productCategory: string
@@ -44,18 +46,7 @@ export default function calculateMyntraFee(args: {
   MRP: number
   productCategory: string
   tradeDiscount: number
-}): {
-  sellingPrice: number
-  discount: number
-  gst: number
-  logisticDeductionFees: number
-  shippingFee: number
-  fixedFee: number
-  commissionRate: number
-  totalPlateformFee: number
-  netMargin: number
-  netMarginPercentage: number
-} {
+}): MyntraResponse {
   const { MRP, productCategory, tradeDiscount } = args
 
   const discount = (MRP / 100) * tradeDiscount
@@ -85,13 +76,13 @@ export default function calculateMyntraFee(args: {
   return {
     sellingPrice,
     discount,
-    gst: overallGST,
+    overallGST,
     logisticDeductionFees,
-    shippingFee: shipmentFee,
-    fixedFee: fixedFees,
+    shipmentFee,
+    fixedFees,
     commissionRate: marketPlaceFees,
     totalPlateformFee,
-    netMargin: netAmountToPay,
+    netAmountToPay,
     netMarginPercentage,
   }
 }
