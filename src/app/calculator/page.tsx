@@ -13,7 +13,12 @@ export default function Home() {
 
   return (
     <main className="min-h-screen px-8 dark:bg-black dark:text-white">
-      <CalculatorForm />
+      <CalculatorForm
+        defaultValue={{
+          plateform: "flipkart",
+        }}
+        root={true}
+      />
     </main>
   )
 }

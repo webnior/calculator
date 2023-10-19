@@ -25,19 +25,21 @@ export default function RootLayout({
     },
     {
       name: "Myntra",
-      link: "/calculator/mintra",
+      link: "/calculator/myntra",
+    },
+    {
+      name: "AJIO",
+      link: "/calculator/ajio",
     },
     {
       name: "Shopsy",
       link: "/calculator/shopsy",
     },
-    {
-      name: "D-Mart",
-      link: "/calculator/dmart",
-    },
   ]
   return (
-    <div className={`${inter.className} flex flex-row container px-0 `}>
+    <div
+      className={`${inter.className} flex flex-row container px-0 min-h-screen`}
+    >
       <div className="border-2 w-64 justify-start hidden md:block">
         <div className="text-center my-8 font-bold text-2xl text-yellow-900">
           <Link href={`/calculator/`}> Calculators</Link>
