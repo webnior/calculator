@@ -1,3 +1,5 @@
+import { FlipkartResponse } from "../types"
+
 function calculateFixedFee(sellingPrice: number, isFBF: boolean): number {
   let fee: number
 
@@ -168,25 +170,13 @@ function calculateShippingFee(weight: number, shippingZones: string): number {
   return shippingFee
 }
 
-export default function calculateTotalFlipkartFeesAndGST(args: {
+export default function calculatetotalPlateformFeesAndGST(args: {
   sellingPrice: number
   productWeight: number
   isFBF: boolean
   productCategory: string
   shippingZones: string
-}): {
-  totalFees: number
-  gst: number
-  fixedFee: number
-  commissionRate: number
-  collectionFee: number
-  shippingFee: number
-  sellingPrice: number
-  totalFlipkartFee: number
-  netMargin: number
-  netMarginPercentage: number
-  deductionMargin: number
-} {
+}): FlipkartResponse {
   const { sellingPrice, productWeight, isFBF, productCategory, shippingZones } =
     args
   // Define fee rates based on the provided information
@@ -210,8 +200,8 @@ export default function calculateTotalFlipkartFeesAndGST(args: {
 
   // Calculate GST on Total Flipkart fees
   const gst: number = (totalFees / 100) * 18
-  const totalFlipkartFee: number = totalFees + gst
-  const netMargin: number = sellingPrice - totalFlipkartFee
+  const totalPlateformFee: number = totalFees + gst
+  const netMargin: number = sellingPrice - totalPlateformFee
   const netMarginPercentage: number = (netMargin / sellingPrice) * 100
   const deductionMargin: number = 100 - netMarginPercentage
 
@@ -223,7 +213,7 @@ export default function calculateTotalFlipkartFeesAndGST(args: {
     collectionFee,
     shippingFee,
     sellingPrice,
-    totalFlipkartFee,
+    totalPlateformFee,
     netMargin,
     netMarginPercentage,
     deductionMargin,

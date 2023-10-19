@@ -1,8 +1,6 @@
 "use client"
 
-import { error } from "console"
-import { JSXElementConstructor, ReactElement, useState } from "react"
-import { Calculators } from "@/data/CalculatorData"
+import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
   ControllerFieldState,
@@ -12,10 +10,22 @@ import {
   UseFormStateReturn,
 } from "react-hook-form"
 import { GrAmazon } from "react-icons/gr"
+import { LiaArtstation } from "react-icons/lia"
 import { SiFlipkart } from "react-icons/si"
 import { TbBrandShopee } from "react-icons/tb"
 import * as z from "zod"
 
+import { ProductCategories } from "@/lib/productCategories"
+import {
+  AjioResponse,
+  AmazonResponse,
+  ColumnType,
+  FlipkartResponse,
+  MyntraResponse,
+  Plateforms,
+  ResponseKeys,
+  ShopsyResponse,
+} from "@/lib/types"
 import { Button } from "@/components/ui/new-york/button"
 import {
   Card,
@@ -49,30 +59,25 @@ import {
 } from "@/components/ui/table"
 
 import { Form, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
+import { Columns } from "./Column"
 
 const formSchema = z.object({
-  plateform: z.enum(["flipkart", "amazon", "myntra", "shopsy", "dmart"]),
-  fbf: z.enum(["fbf", "nfbf"]),
-  szone: z.enum(["local", "regional", "national"]),
+  plateform: z.enum(["flipkart", "amazon", "myntra", "shopsy", "ajio"]),
+  fbf: z.enum(["fbf", "nfbf"]).optional(),
+  szone: z.enum(["local", "regional", "national"]).optional(),
   pcat: z.string(),
   sellPrice: z.string(),
   weight: z.string(),
 })
 
+type ResponseType =
+  | {
+      [key in ResponseKeys]: number
+    }
+  | null
+
 export function CalculatorForm() {
-  const [response, setResponse] = useState<{
-    totalFees: number
-    gst: number
-    totalFlipkartFee: number
-    fixedFee: number
-    commissionRate: number
-    collectionFee: number
-    shippingFee: number
-    sellingPrice: number
-    netMargin: number
-    netMarginPercentage: number
-    deductionMargin: number
-  } | null>()
+  const [response, setResponse] = useState<ResponseType>()
 
   const [error, setError] = useState<string>()
 
@@ -82,9 +87,21 @@ export function CalculatorForm() {
     defaultValues: {
       plateform: "flipkart",
       sellPrice: "100",
-      weight: "100",
+      fbf: "fbf",
+      szone: "local",
+      weight: "10",
     },
   })
+
+  function TitleCase(str: string) {
+    return str
+      .toLowerCase()
+      .split(" ")
+      .map(function (word) {
+        return word.charAt(0).toUpperCase() + word.slice(1)
+      })
+      .join(" ")
+  }
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -103,6 +120,7 @@ export function CalculatorForm() {
     }
 
     const res = await (await fetch(api_url, api_req_options)).json()
+    console.log({ res })
     if (res.error) {
       setError(() => res.error)
       setResponse(() => null)
@@ -111,6 +129,8 @@ export function CalculatorForm() {
       setError(() => "")
     }
   }
+
+  const selectedPlateform: Plateforms = form.watch("plateform")
 
   return (
     <>
@@ -129,7 +149,7 @@ export function CalculatorForm() {
                   <FormItem>
                     <RadioGroup
                       defaultValue={field.value}
-                      className="grid grid-cols-3 gap-4"
+                      className="grid grid-cols-4 gap-4"
                       onValueChange={field.onChange}
                     >
                       <div>
@@ -148,6 +168,7 @@ export function CalculatorForm() {
                           Flipkart
                         </Label>
                       </div>
+
                       <div>
                         <RadioGroupItem
                           value="amazon"
@@ -166,18 +187,34 @@ export function CalculatorForm() {
                       </div>
                       <div>
                         <RadioGroupItem
-                          value="shopsy"
-                          id="shopsy"
+                          value="myntra"
+                          id="myntra"
                           className="peer sr-only"
                         />
                         <Label
-                          htmlFor="shopsy"
+                          htmlFor="myntra"
                           className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                         >
                           <span className="flex w-8 h-8 justify-center">
                             <TbBrandShopee className="w-6 h-6" />
                           </span>
-                          Shopsy
+                          Myntra
+                        </Label>
+                      </div>
+                      <div>
+                        <RadioGroupItem
+                          value="ajio"
+                          id="ajio"
+                          className="peer sr-only"
+                        />
+                        <Label
+                          htmlFor="ajio"
+                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                        >
+                          <span className="flex w-8 h-8 justify-center">
+                            <LiaArtstation className="w-6 h-6" />
+                          </span>
+                          AJIO
                         </Label>
                       </div>
                     </RadioGroup>
@@ -195,6 +232,10 @@ export function CalculatorForm() {
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
+                        disabled={
+                          selectedPlateform === "myntra" ||
+                          selectedPlateform === "ajio"
+                        }
                       >
                         <SelectTrigger id="fbf">
                           <SelectValue placeholder="None" />
@@ -217,6 +258,10 @@ export function CalculatorForm() {
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
+                        disabled={
+                          selectedPlateform === "myntra" ||
+                          selectedPlateform === "ajio"
+                        }
                       >
                         <SelectTrigger id="szone">
                           <SelectValue placeholder="None" />
@@ -245,34 +290,13 @@ export function CalculatorForm() {
                           <SelectValue placeholder="None" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="1">
-                            Clothing &amp; Accessories
-                          </SelectItem>
-                          <SelectItem value="2">
-                            Food &amp; Nutrition
-                          </SelectItem>
-                          <SelectItem value="3">
-                            Kitchen Cookware &amp; Serveware
-                          </SelectItem>
-                          <SelectItem value="4">Edible Oil</SelectItem>
-                          <SelectItem value="5">Health &amp; Beauty</SelectItem>
-                          <SelectItem value="6">Footwear</SelectItem>
-                          <SelectItem value="7">
-                            Painting &amp; Posters
-                          </SelectItem>
-                          <SelectItem value="8">
-                            Artificial Jewellery
-                          </SelectItem>
-                          <SelectItem value="9">Soap</SelectItem>
-                          <SelectItem value="10">Cosmetic</SelectItem>
-                          <SelectItem value="11">
-                            Health &amp; Wellness
-                          </SelectItem>
-                          <SelectItem value="12">
-                            Clothing &amp; Apparels
-                          </SelectItem>
-                          <SelectItem value="13">Home &amp; Kitchen</SelectItem>
-                          <SelectItem value="14">Other</SelectItem>
+                          {ProductCategories[selectedPlateform].map(
+                            (elem, index) => (
+                              <SelectItem value={elem[0]} key={index}>
+                                {TitleCase(elem[1])}
+                              </SelectItem>
+                            )
+                          )}
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -298,7 +322,11 @@ export function CalculatorForm() {
                 name="weight"
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
-                    <Label htmlFor="weight">Weight (gram) </Label>
+                    <Label htmlFor="weight">
+                      {selectedPlateform === "myntra"
+                        ? "Discount (%)"
+                        : "Weight (gram)"}{" "}
+                    </Label>
                     <Input id="weight" placeholder="gm" {...field} />
                     <FormMessage />
                   </FormItem>
@@ -323,69 +351,25 @@ export function CalculatorForm() {
           <div className="mv-10">
             <Table>
               <TableCaption>Detailed Analysis.</TableCaption>
-              {/* <TableHeader>
-              <TableRow>
-                <TableHead className="w-[100px]">Invoice</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Method</TableHead>
-                <TableHead className="text-right">Amount</TableHead>
-              </TableRow>
-            </TableHeader> */}
               <TableBody>
-                <TableRow>
-                  <TableCell className="font-medium">Shipping Fees</TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.shippingFee * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Collection Fees</TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.collectionFee * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Commission Fees</TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.commissionRate * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Fixed Fees</TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.fixedFee * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">
-                    GST on Marketplace Fees
-                  </TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.gst * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">
-                    Total Flipkart Fees
-                  </TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.totalFlipkartFee * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">
-                    Settelment Amount
-                  </TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.netMargin * 100) / 100}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Net Margin %</TableCell>
-                  <TableCell className="text-right">
-                    {Math.round(response.netMarginPercentage * 100) / 100}
-                  </TableCell>
-                </TableRow>
+                {Object.keys(Columns[selectedPlateform]).map((key, index) => {
+                  return (
+                    <TableRow key={index}>
+                      <TableCell className="font-medium">
+                        {
+                          // @ts-ignore
+                          Columns[selectedPlateform][key]
+                        }
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {
+                          // @ts-ignore
+                          Math.round(response[key] * 100) / 100
+                        }
+                      </TableCell>
+                    </TableRow>
+                  )
+                })}
               </TableBody>
             </Table>
           </div>
