@@ -2,13 +2,7 @@
 
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import {
-  ControllerFieldState,
-  ControllerRenderProps,
-  FieldValues,
-  useForm,
-  UseFormStateReturn,
-} from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { GrAmazon } from "react-icons/gr"
 import { LiaArtstation } from "react-icons/lia"
 import { SiFlipkart } from "react-icons/si"
@@ -16,16 +10,7 @@ import { TbBrandShopee } from "react-icons/tb"
 import * as z from "zod"
 
 import { ProductCategories } from "@/lib/productCategories"
-import {
-  AjioResponse,
-  AmazonResponse,
-  ColumnType,
-  FlipkartResponse,
-  MyntraResponse,
-  Plateforms,
-  ResponseKeys,
-  ShopsyResponse,
-} from "@/lib/types"
+import { Plateforms, ResponseKeys } from "@/lib/types"
 import { Button } from "@/components/ui/new-york/button"
 import {
   Card,
@@ -53,16 +38,20 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableHead,
-  TableHeader,
   TableRow,
 } from "@/components/ui/table"
 
-import { Form, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
+import { Form, FormField, FormItem, FormMessage } from "../ui/form"
 import { Columns } from "./Column"
 
 const formSchema = z.object({
-  plateform: z.enum(["flipkart", "amazon", "myntra", "shopsy", "ajio"]),
+  plateform: z
+    .string()
+    .refine(
+      (value: string): value is Plateforms =>
+        (value as Plateforms) in {} || false,
+      "Invalid Plateform type"
+    ),
   fbf: z.enum(["fbf", "nfbf"]).optional(),
   szone: z.enum(["local", "regional", "national"]).optional(),
   pcat: z.string(),
@@ -75,8 +64,27 @@ type ResponseType =
       [key in ResponseKeys]: number
     }
   | null
+interface ICalculatorForm {
+  defaultValue: {
+    plateform: Plateforms
+    sellPrice?: z.infer<typeof formSchema>["sellPrice"]
+    fbf?: z.infer<typeof formSchema>["fbf"]
+    szone?: z.infer<typeof formSchema>["szone"]
+    weight?: string
+  }
+  root: boolean
+}
 
-export function CalculatorForm() {
+export function CalculatorForm({
+  defaultValue: {
+    plateform,
+    sellPrice = "0",
+    fbf = "fbf",
+    szone = "local",
+    weight = "10",
+  },
+  root,
+}: ICalculatorForm) {
   const [response, setResponse] = useState<ResponseType>()
 
   const [error, setError] = useState<string>()
@@ -85,11 +93,11 @@ export function CalculatorForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      plateform: "flipkart",
-      sellPrice: "100",
-      fbf: "fbf",
-      szone: "local",
-      weight: "10",
+      plateform,
+      sellPrice,
+      fbf,
+      szone,
+      weight,
     },
   })
 
@@ -149,7 +157,7 @@ export function CalculatorForm() {
                   <FormItem>
                     <RadioGroup
                       defaultValue={field.value}
-                      className="grid grid-cols-4 gap-4"
+                      className="grid grid-cols-5 gap-4"
                       onValueChange={field.onChange}
                     >
                       <div>
@@ -157,6 +165,7 @@ export function CalculatorForm() {
                           value="flipkart"
                           id="flipkart"
                           className="peer sr-only"
+                          disabled={!root && plateform !== "flipkart"}
                         />
                         <Label
                           htmlFor="flipkart"
@@ -174,6 +183,7 @@ export function CalculatorForm() {
                           value="amazon"
                           id="amazon"
                           className="peer sr-only"
+                          disabled={!root && plateform !== "amazon"}
                         />
                         <Label
                           htmlFor="amazon"
@@ -190,6 +200,7 @@ export function CalculatorForm() {
                           value="myntra"
                           id="myntra"
                           className="peer sr-only"
+                          disabled={!root && plateform !== "myntra"}
                         />
                         <Label
                           htmlFor="myntra"
@@ -206,6 +217,7 @@ export function CalculatorForm() {
                           value="ajio"
                           id="ajio"
                           className="peer sr-only"
+                          disabled={!root && plateform !== "ajio"}
                         />
                         <Label
                           htmlFor="ajio"
@@ -215,6 +227,23 @@ export function CalculatorForm() {
                             <LiaArtstation className="w-6 h-6" />
                           </span>
                           AJIO
+                        </Label>
+                      </div>
+                      <div>
+                        <RadioGroupItem
+                          value="shopsy"
+                          id="shopsy"
+                          className="peer sr-only"
+                          disabled={!root && plateform !== "shopsy"}
+                        />
+                        <Label
+                          htmlFor="shopsy"
+                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                        >
+                          <span className="flex w-8 h-8 justify-center">
+                            <LiaArtstation className="w-6 h-6" />
+                          </span>
+                          Shopsy
                         </Label>
                       </div>
                     </RadioGroup>
@@ -228,21 +257,28 @@ export function CalculatorForm() {
                   name="fbf"
                   render={({ field }) => (
                     <FormItem className="grid gap-2 col-span-1">
-                      <Label htmlFor="fbf">FBF</Label>
+                      <Label htmlFor="fbf">
+                        {selectedPlateform === "flipkart" ? "FBF" : "FBA"}
+                      </Label>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
                         disabled={
                           selectedPlateform === "myntra" ||
-                          selectedPlateform === "ajio"
+                          selectedPlateform === "ajio" ||
+                          selectedPlateform === "shopsy"
                         }
                       >
                         <SelectTrigger id="fbf">
                           <SelectValue placeholder="None" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="fbf">FBF</SelectItem>
-                          <SelectItem value="nfbf">NFBF</SelectItem>
+                          <SelectItem value="fbf">
+                            {selectedPlateform === "flipkart" ? "FBF" : "FBA"}
+                          </SelectItem>
+                          <SelectItem value="nfbf">
+                            {selectedPlateform === "flipkart" ? "NFBF" : "NFBA"}
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -260,7 +296,8 @@ export function CalculatorForm() {
                         defaultValue={field.value}
                         disabled={
                           selectedPlateform === "myntra" ||
-                          selectedPlateform === "ajio"
+                          selectedPlateform === "ajio" ||
+                          selectedPlateform === "shopsy"
                         }
                       >
                         <SelectTrigger id="szone">
@@ -290,7 +327,7 @@ export function CalculatorForm() {
                           <SelectValue placeholder="None" />
                         </SelectTrigger>
                         <SelectContent>
-                          {ProductCategories[selectedPlateform].map(
+                          {ProductCategories[selectedPlateform]?.map(
                             (elem, index) => (
                               <SelectItem value={elem[0]} key={index}>
                                 {TitleCase(elem[1])}

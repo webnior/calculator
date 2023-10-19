@@ -1,9 +1,7 @@
+import { Plateforms } from "./types"
+
 export const ProductCategories: {
-  flipkart: string[][]
-  amazon: string[][]
-  myntra: string[][]
-  shopsy: string[][]
-  ajio: string[][]
+  [key in Plateforms]: string[][]
 } = {
   flipkart: [
     ["1", "clothing & accessories"],
@@ -67,5 +65,12 @@ export const ProductCategories: {
     ["5", "artificial jewellery"],
     ["6", "other"],
   ],
-  shopsy: [[]],
+  shopsy: [
+    ["1", "silver jewellery"],
+    ["2", "silver items"],
+    ["3", "gold and silver coins"],
+    ["4", "fashion jewellery"],
+    ["5", "artificial jewellery"],
+    ["6", "other"],
+  ],
 }
