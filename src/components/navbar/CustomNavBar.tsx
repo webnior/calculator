@@ -27,31 +27,31 @@ const calculator = [
   {
     name: "Amazon",
     description: "Get a better understanding traffic",
-    href: "#",
+    href: "/calculator/amazon",
     icon: ChartPieIcon,
   },
   {
     name: "Flipkart",
     description: "Speak directly to your customers",
-    href: "/calculator",
+    href: "/calculator/flipkart",
     icon: CursorArrowRaysIcon,
   },
   {
-    name: "D-Mart",
+    name: "Myntra",
     description: "Your customers’ data will be safe",
-    href: "#",
+    href: "/calculator/myntra",
     icon: FingerPrintIcon,
   },
   {
     name: "Shopsy",
     description: "Connect with third-party tools",
-    href: "#",
+    href: "/calculator/shopsy",
     icon: SquaresPlusIcon,
   },
   {
-    name: "Mintra",
+    name: "AJIO",
     description: "Build strategic funnels that will convert",
-    href: "#",
+    href: "/calculator/ajio",
     icon: ArrowPathIcon,
   },
 ]
@@ -161,13 +161,13 @@ export default function CustomNavBar() {
                               />
                             </div>
                             <div className="flex-auto">
-                              <a
+                              <Link
                                 href={item.href}
                                 className="block font-semibold text-gray-900"
                               >
                                 {item.name}
                                 <span className="absolute inset-0" />
-                              </a>
+                              </Link>
                               <p className="mt-1 text-gray-600">
                                 {item.description}
                               </p>
@@ -188,13 +188,13 @@ export default function CustomNavBar() {
                               />
                             </div>
                             <div className="flex-auto">
-                              <a
+                              <Link
                                 href={item.href}
                                 className="block font-semibold text-gray-900"
                               >
                                 {item.name}
                                 <span className="absolute inset-0" />
-                              </a>
+                              </Link>
                               <p className="mt-1 text-gray-600">
                                 {item.description}
                               </p>
@@ -235,7 +235,7 @@ export default function CustomNavBar() {
                 </div>
                 <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                   {callsToAction.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
                       className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
@@ -245,7 +245,7 @@ export default function CustomNavBar() {
                         aria-hidden="true"
                       />
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </Popover.Panel>
@@ -273,9 +273,12 @@ export default function CustomNavBar() {
                 <div className="flex flex-row justify-between">
                   <div className=" flex flex-col">
                     <div className="pl-16 pt-6">
-                      <h1 className="text-2xl font-sans font-semibold">
+                      <Link
+                        href="/calculator"
+                        className="text-2xl font-sans font-semibold"
+                      >
                         Our Calculators
-                      </h1>
+                      </Link>
                     </div>
                     <div className="flex flex-row px-10">
                       <div className="p-2">
@@ -291,13 +294,13 @@ export default function CustomNavBar() {
                               />
                             </div>
                             <div className="flex-auto">
-                              <a
+                              <Link
                                 href={item.href}
                                 className="block font-semibold text-gray-900"
                               >
                                 {item.name}
                                 <span className="absolute inset-0" />
-                              </a>
+                              </Link>
                               <p className="mt-1 text-gray-600">
                                 {item.description}
                               </p>
@@ -318,13 +321,13 @@ export default function CustomNavBar() {
                               />
                             </div>
                             <div className="flex-auto">
-                              <a
+                              <Link
                                 href={item.href}
                                 className="block font-semibold text-gray-900"
                               >
                                 {item.name}
                                 <span className="absolute inset-0" />
-                              </a>
+                              </Link>
                               <p className="mt-1 text-gray-600">
                                 {item.description}
                               </p>
@@ -370,7 +373,7 @@ export default function CustomNavBar() {
                 </div>
                 <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                   {callsToAction.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
                       className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
@@ -380,7 +383,7 @@ export default function CustomNavBar() {
                         aria-hidden="true"
                       />
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </Popover.Panel>
@@ -403,9 +406,12 @@ export default function CustomNavBar() {
           <Link href="/career">Career</Link>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link
+            href="#"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Contact Us <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
         </div>
       </nav>
       <Dialog
@@ -417,11 +423,11 @@ export default function CustomNavBar() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
 
               <h1>TECHNOVITA</h1>
-            </a>
+            </Link>
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -490,32 +496,32 @@ export default function CustomNavBar() {
                     </>
                   )}
                 </Disclosure>
-                <a
+                <Link
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Features
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Marketplace
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Company
-                </a>
+                </Link>
               </div>
               <div className="py-6">
-                <a
+                <Link
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
-                </a>
+                </Link>
               </div>
             </div>
           </div>
