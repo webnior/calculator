@@ -45,13 +45,7 @@ import { Form, FormField, FormItem, FormMessage } from "../ui/form"
 import { Columns } from "./Column"
 
 const formSchema = z.object({
-  plateform: z
-    .string()
-    .refine(
-      (value: string): value is Plateforms =>
-        (value as Plateforms) in {} || false,
-      "Invalid Plateform type"
-    ),
+  plateform: z.custom<Plateforms>(),
   fbf: z.enum(["fbf", "nfbf"]).optional(),
   szone: z.enum(["local", "regional", "national"]).optional(),
   pcat: z.string(),
@@ -78,7 +72,7 @@ interface ICalculatorForm {
 export function CalculatorForm({
   defaultValue: {
     plateform,
-    sellPrice = "0",
+    sellPrice = "500",
     fbf = "fbf",
     szone = "local",
     weight = "10",
@@ -126,6 +120,7 @@ export function CalculatorForm({
       },
       body: JSON.stringify(values),
     }
+    console.log({ values })
 
     const res = await (await fetch(api_url, api_req_options)).json()
     console.log({ res })
@@ -138,7 +133,7 @@ export function CalculatorForm({
     }
   }
 
-  const selectedPlateform: Plateforms = form.watch("plateform")
+  const selectedPlateform = form.watch("plateform")
 
   return (
     <>
