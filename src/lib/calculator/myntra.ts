@@ -30,7 +30,7 @@ function calculateCommissionFee(
       break
 
     case "clothing & apparels":
-      commissionRate = 22
+      commissionRate = 17
       break
 
     default:
