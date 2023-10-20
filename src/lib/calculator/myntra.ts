@@ -52,22 +52,18 @@ export default function calculateMyntraFee(args: {
   const discount = (MRP / 100) * tradeDiscount
   const sellingPrice = MRP - discount
 
-  const fixedFees = 15
+  const fixedFees = 0.04 * sellingPrice
 
   const marketPlaceFees = calculateCommissionFee(sellingPrice, productCategory)
 
-  const shipmentFee = 77
+  const shipmentFee = 74
 
-  const overallGST = sellingPrice * 0.05
+  const overallGST = sellingPrice * 0.12
 
-  const logisticDeductionFees = sellingPrice * 0.1
+  const GMV = sellingPrice * 0.02
 
   const totalPlateformFee =
-    fixedFees +
-    overallGST +
-    marketPlaceFees +
-    shipmentFee +
-    logisticDeductionFees
+    fixedFees + overallGST + marketPlaceFees + shipmentFee + GMV
 
   const netAmountToPay = sellingPrice - totalPlateformFee
 
@@ -77,7 +73,7 @@ export default function calculateMyntraFee(args: {
     sellingPrice,
     discount,
     overallGST,
-    logisticDeductionFees,
+    GMV,
     shipmentFee,
     fixedFees,
     commissionRate: marketPlaceFees,
