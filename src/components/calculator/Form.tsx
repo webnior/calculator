@@ -134,6 +134,7 @@ export function CalculatorForm({
   }
 
   const selectedPlateform = form.watch("plateform")
+  console.log(selectedPlateform)
 
   return (
     <>
@@ -153,10 +154,7 @@ export function CalculatorForm({
                     <RadioGroup
                       defaultValue={field.value}
                       className="grid grid-cols-5 gap-4"
-                      onValueChange={() => {
-                        setResponse(null)
-                        return field.onChange
-                      }}
+                      onValueChange={field.onChange}
                     >
                       <div>
                         <RadioGroupItem
