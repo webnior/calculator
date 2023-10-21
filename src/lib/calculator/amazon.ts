@@ -251,7 +251,7 @@ export default function calculatetotalPlateformFeesAndGST(args: {
   }
 }
 
-export const mapProductCategory = (catNum: string): string => {
+export const amazonProductCategory = (catNum: string): string => {
   const map = new Map<string, string>([
     ["1", "amazon device accessories"],
     ["2", "automotive and powersports"],

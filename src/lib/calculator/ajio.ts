@@ -101,7 +101,7 @@ export default function calculateTotalAjioFeesAndGST(args: {
   }
 }
 
-export const mapProductCategory = (catNum: string): string => {
+export const ajioProductCategory = (catNum: string): string => {
   const map = new Map<string, string>([
     ["1", "silver jewellery"],
     ["2", "silver items"],

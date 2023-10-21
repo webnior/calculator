@@ -83,7 +83,7 @@ export default function calculateMyntraFee(args: {
   }
 }
 
-export const mapProductCategory = (catNum: string): string => {
+export const myntraProductCategory = (catNum: string): string => {
   const map = new Map<string, string>([
     ["1", "clothing & accessories"],
     ["2", "food & nutrition"],
