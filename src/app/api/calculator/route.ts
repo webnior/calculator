@@ -5,8 +5,10 @@ import {
   myntraCalculator,
 } from "@/lib"
 
+import { ajioProductCategory } from "@/lib/calculator/ajio"
 import { amazonProductCategory } from "@/lib/calculator/amazon"
 import { flipkartProductCategory } from "@/lib/calculator/flipkart"
+import { myntraProductCategory } from "@/lib/calculator/myntra"
 
 export async function POST(request: Request) {
   const { plateform, sellPrice, fbf, szone, pcat, weight } =
@@ -40,7 +42,7 @@ export async function POST(request: Request) {
     case "myntra": {
       const output = myntraCalculator({
         MRP: parseInt(sellPrice),
-        productCategory: pcat,
+        productCategory: myntraProductCategory(pcat),
         tradeDiscount: parseInt(weight),
       })
       console.log({ myntra: output })
@@ -49,7 +51,7 @@ export async function POST(request: Request) {
     case "ajio": {
       const output = ajioCalculator({
         MRP: parseInt(sellPrice),
-        productCategory: pcat,
+        productCategory: ajioProductCategory(pcat),
         tradeDiscount: parseInt(weight),
       })
       console.log({ ajio: output })
