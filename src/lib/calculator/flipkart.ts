@@ -220,7 +220,7 @@ export default function calculatetotalPlateformFeesAndGST(args: {
   }
 }
 
-export const mapProductCategory = (catNum: string): string => {
+export const flipkartProductCategory = (catNum: string): string => {
   const map = new Map<string, string>([
     ["1", "clothing & accessories"],
     ["2", "food & nutrition"],

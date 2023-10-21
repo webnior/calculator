@@ -153,7 +153,10 @@ export function CalculatorForm({
                     <RadioGroup
                       defaultValue={field.value}
                       className="grid grid-cols-5 gap-4"
-                      onValueChange={field.onChange}
+                      onValueChange={() => {
+                        setResponse(null)
+                        return field.onChange
+                      }}
                     >
                       <div>
                         <RadioGroupItem
