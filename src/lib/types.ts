@@ -59,7 +59,7 @@ export type MyntraResponse = {
   netMarginPercentage: number
   sellingPrice: number
   discount: number
-  logisticDeductionFees: number
+  GMV: number
 }
 
 export type ResponseKeys =

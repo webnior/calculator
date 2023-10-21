@@ -355,7 +355,8 @@ export function CalculatorForm({
                 render={({ field }) => (
                   <FormItem className="grid gap-2">
                     <Label htmlFor="weight">
-                      {selectedPlateform === "myntra"
+                      {selectedPlateform === "myntra" ||
+                      selectedPlateform === "ajio"
                         ? "Discount (%)"
                         : "Weight (gram)"}{" "}
                     </Label>

@@ -17,6 +17,15 @@ function calculateFixedFee(sellingPrice: number, isFBA: boolean): number {
   return fees
 }
 
+function calculateOtherFee(isFBA: boolean, productWeight: number) {
+  let otherFees = 0
+  let isFBAin = isFBA ? "fba" : "nfba"
+  productWeight = productWeight / 1000
+  otherFees = isFBAin === "fba" ? (productWeight < 12 ? 13 : 26) : 0
+
+  return otherFees
+}
+
 function calculateCommissionFee(
   productCategory: string,
   itemPrice: number
@@ -207,7 +216,7 @@ export default function calculatetotalPlateformFeesAndGST(args: {
   )
 
   // Calculate collection fee based on payment mode
-  const collectionFee: number = 0
+  const collectionFee: number = calculateOtherFee(isFBF, productWeight)
 
   // Calculate shipping fee based on zone
   const shippingFee: number = calculateShippingFee(
