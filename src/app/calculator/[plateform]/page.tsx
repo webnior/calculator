@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import { Plateforms } from "@/lib/types"
 import { CalculatorForm } from "@/components/calculator/Form"
 
-export default function Home({
+export default function Plateform({
   params: { plateform },
 }: {
   params: { plateform: Plateforms }

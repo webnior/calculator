@@ -120,10 +120,8 @@ export function CalculatorForm({
       },
       body: JSON.stringify(values),
     }
-    console.log({ values })
 
     const res = await (await fetch(api_url, api_req_options)).json()
-    console.log({ res })
     if (res.error) {
       setError(() => res.error)
       setResponse(() => null)
@@ -134,7 +132,6 @@ export function CalculatorForm({
   }
 
   const selectedPlateform = form.watch("plateform")
-  console.log(selectedPlateform)
 
   return (
     <>

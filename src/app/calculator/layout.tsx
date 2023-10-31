@@ -37,14 +37,12 @@ export default function RootLayout({
     },
   ]
   return (
-    <div
-      className={`${inter.className} flex flex-row container px-0 min-h-screen`}
-    >
-      <div className="border-2 w-64 justify-start hidden md:block">
-        <div className="text-center my-8 font-bold text-2xl text-yellow-900">
+    <div className={`${inter.className} flex flex-row container px-0 `}>
+      <div className="border-2 w-64 justify-start hidden md:block h-screen sticky top-0">
+        <div className="text-center my-8 font-bold text-2xl text-yellow-900 ">
           <Link href={`/calculator/`}> Calculators</Link>
         </div>
-        <nav className="w-full">
+        <nav className="w-full ">
           <div className=" text-left ml-8 mr-8">
             {calculators.map((calculator, i) => (
               <div
@@ -59,8 +57,8 @@ export default function RootLayout({
           </div>
         </nav>
       </div>
-      <div className="flex-1">{children}</div>
-      <div className="w-64 justify-end text-right border-2 border-spacing-1 hidden lg:block">
+      <div className="flex-1 min-h-screen">{children}</div>
+      <div className="w-64 justify-end text-right border-2 border-spacing-1 hidden lg:block h-screen sticky top-0">
         right side bar
       </div>
     </div>
