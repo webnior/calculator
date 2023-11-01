@@ -12,6 +12,7 @@ function calculateCommissionFee(
   let forwardShippingCost: number
   let reverseShippingCost: number
   productCategory = productCategory.toLowerCase()
+  console.log({ productCategory })
 
   if (
     productCategory === "silver jewellery" ||

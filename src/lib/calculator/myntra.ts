@@ -6,6 +6,7 @@ function calculateCommissionFee(
 ): number {
   let commissionRate: number
   productCategory = productCategory.toLowerCase()
+  console.log({ productCategory })
 
   switch (productCategory) {
     case "clothing & accessories":
