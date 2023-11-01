@@ -49,12 +49,12 @@ const calculator = [
     href: "/calculator/myntra",
     icon: SiCoinmarketcap,
   },
-  {
-    name: "Shopsy",
-    description: "Connect with third-party tools",
-    href: "/calculator/shopsy",
-    icon: TbBrandShopee,
-  },
+  // {
+  //   name: "Shopsy",
+  //   description: "Connect with third-party tools",
+  //   href: "/calculator/shopsy",
+  //   icon: TbBrandShopee,
+  // },
   {
     name: "AJIO",
     description: "Build strategic funnels that will convert",
