@@ -25,6 +25,7 @@ function calculateCommissionFee(
   productName: string
 ): number {
   let commissionRate: number
+  console.log({ productName })
 
   switch (productName.toLowerCase()) {
     case "clothing & accessories":

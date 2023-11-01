@@ -30,6 +30,7 @@ function calculateCommissionFee(
   productCategory: string,
   itemPrice: number
 ): number {
+  console.log({ productCategory })
   switch (productCategory.toLowerCase()) {
     case "amazon device accessories":
     case "automotive and powersports":
