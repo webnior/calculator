@@ -402,7 +402,7 @@ export default function CustomNavBar() {
           >
             Company
           </Link>
-          <Link href="/docs">Docs</Link>
+          <Link href="/seller-services">seller-services</Link>
           <Link href="/career">Career</Link>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
