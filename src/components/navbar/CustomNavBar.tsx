@@ -89,7 +89,7 @@ const products = [
 ]
 const callsToAction = [
   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-  { name: "Contact sales", href: "#", icon: PhoneIcon },
+  { name: "Contact sales", href: "tel:7451073504", icon: PhoneIcon },
 ]
 
 function classNames(...classes: string[]) {
@@ -215,7 +215,8 @@ export default function CustomNavBar() {
                         />
                       </div>
                       <h2 className="py-2 font-bold font-[#555]">
-                        GoFynd : The trendiest fashon marketplace
+                        Technovita Solution : One Stop Solution for your all
+                        Ecommerce
                       </h2>
                     </div>
                     <div className="  cursor-pointer max-w-[400px] max-h-[400px]">
@@ -228,7 +229,7 @@ export default function CustomNavBar() {
                         />
                       </div>
                       <h2 className="py-2 font-bold font-[#555]">
-                        ConvertFiles.ai : Convert Image to any format
+                        Grow With US : Boost your sales with Technovita Solution
                       </h2>
                     </div>
                   </div>
@@ -391,28 +392,20 @@ export default function CustomNavBar() {
           </Popover>
 
           <Link
-            href="/marketplace"
+            href="/contact-us"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
-            Marketplace
+            Contact Us
           </Link>
           <Link
-            href="/company"
+            href="/about-us"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
-            Company
+            About Us
           </Link>
           <Link href="/seller-services">seller-services</Link>
           <Link href="/career">Career</Link>
         </Popover.Group>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            href="#"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Contact Us <span aria-hidden="true">&rarr;</span>
-          </Link>
-        </div>
       </nav>
       <Dialog
         as="div"
