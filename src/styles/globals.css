@@ -339,14 +339,13 @@
 
 .call-btn .tada a:before {
   font-family: FontAwesome;
-  content: "\f095";
-  font-size: 25px;
-
+  /* content: "\f095"; */
+  content: url("/phone.png");
   text-decoration: none;
   color: #fff;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   position: absolute;
-  top: 40%;
+  top: 24%;
   margin-top: -10px;
 }
 
