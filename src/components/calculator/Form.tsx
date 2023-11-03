@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { GrAmazon } from "react-icons/gr"
 import { LiaArtstation } from "react-icons/lia"
-import { SiFlipkart } from "react-icons/si"
+import { SiCoinmarketcap, SiFlipkart } from "react-icons/si"
 import { TbBrandShopee } from "react-icons/tb"
 import * as z from "zod"
 
@@ -200,7 +200,7 @@ export function CalculatorForm({
                           className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                         >
                           <span className="flex w-8 h-8 justify-center">
-                            <TbBrandShopee className="w-6 h-6" />
+                            <SiCoinmarketcap className="w-6 h-6" />
                           </span>
                           Myntra
                         </Label>
@@ -234,7 +234,7 @@ export function CalculatorForm({
                           className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                         >
                           <span className="flex w-8 h-8 justify-center">
-                            <LiaArtstation className="w-6 h-6" />
+                            <TbBrandShopee className="w-6 h-6" />
                           </span>
                           Shopsy
                         </Label>
