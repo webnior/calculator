@@ -58,8 +58,23 @@ export default function RootLayout({
         </nav>
       </div>
       <div className="flex-1 min-h-screen">{children}</div>
-      <div className="w-64 justify-end text-right border-2 border-spacing-1 hidden lg:block h-screen sticky top-0">
-        right side bar
+      <div className="w-64 justify-end text-left p-3 underline hover:text-blue-600 border-2 border-spacing-1 hidden lg:block h-screen sticky top-0">
+        <ul>
+          <li>
+            <Link
+              href={`/seller-services/amazon-seller-guide/how-to-create-seller-account-on-amazon`}
+            >
+              Amazon Onboarding
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={`/seller-services/flipkart-seller-guide/how-to-create-seller-account-on-flipkart`}
+            >
+              Flipkart Onboarding
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   )
