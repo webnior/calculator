@@ -377,7 +377,7 @@ export default function CustomNavBar() {
                         />
                       </div>
                       <h2 className="py-2 font-bold font-[#555]">
-                        Fynd Store OS
+                        Technovita Store OS
                       </h2>
 
                       <p>
