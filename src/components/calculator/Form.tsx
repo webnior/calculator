@@ -150,7 +150,7 @@ export function CalculatorForm({
                   <FormItem>
                     <RadioGroup
                       defaultValue={field.value}
-                      className="grid grid-cols-5 gap-4"
+                      className="grid grid-cols-4 gap-4"
                       onValueChange={field.onChange}
                     >
                       <div>
@@ -222,7 +222,7 @@ export function CalculatorForm({
                           AJIO
                         </Label>
                       </div>
-                      <div>
+                      {/* <div>
                         <RadioGroupItem
                           value="shopsy"
                           id="shopsy"
@@ -238,7 +238,7 @@ export function CalculatorForm({
                           </span>
                           Shopsy
                         </Label>
-                      </div>
+                      </div> */}
                     </RadioGroup>
                     <FormMessage />
                   </FormItem>

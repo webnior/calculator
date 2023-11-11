@@ -31,10 +31,10 @@ export default function RootLayout({
       name: "AJIO",
       link: "/calculator/ajio",
     },
-    {
-      name: "Shopsy",
-      link: "/calculator/shopsy",
-    },
+    // {
+    //   name: "Shopsy",
+    //   link: "/calculator/shopsy",
+    // },
   ]
   return (
     <div className={`${inter.className} flex flex-row container px-0 `}>

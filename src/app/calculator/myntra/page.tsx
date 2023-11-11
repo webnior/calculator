@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator"
+import FAQ from "@/components/calculator/blogs/comp/FAQ"
 import MyntraBlog from "@/components/calculator/blogs/myntra"
 import { CalculatorForm } from "@/components/calculator/Form"
 
@@ -15,7 +16,14 @@ export default function MyntraCalculator() {
       </div>
       <Separator />
       <Separator />
-      <MyntraBlog />
+      <div className="mb-5">
+        <MyntraBlog />
+      </div>
+      <Separator />
+      <Separator />
+      <div className="mb-5">
+        <FAQ page="myntra" />
+      </div>
     </main>
   )
 }
