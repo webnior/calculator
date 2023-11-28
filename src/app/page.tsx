@@ -5,9 +5,9 @@ import { useTheme } from "next-themes"
 
 import Callbutton from "@/components/callButton/Callbutton"
 import Divider from "@/components/Divider"
-import ExperienceSection from "@/components/Experience/ExperienceSection"
 import Hero from "@/components/heroSection/Hero"
 import Services from "@/components/servicesSection/Services"
+import WhatsAppWidget from "@/components/whatsappBottom/WhatsAppWidget"
 
 type Theme = "light" | "dark"
 
@@ -21,6 +21,7 @@ export default function Home() {
       <Services />
       <Divider />
       <Callbutton />
+      <WhatsAppWidget />
     </main>
   )
 }
