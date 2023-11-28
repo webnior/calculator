@@ -566,7 +566,7 @@ export default function CustomNavBar() {
           >
             About Us
           </Link> */}
-          <Link href="/seller-services">seller-services</Link>
+          <Link href="/seller-services">Seller Guide</Link>
           {/* <Link href="/career">Career</Link> */}
         </Popover.Group>
         <div className="flex lg:flex-1"></div>
