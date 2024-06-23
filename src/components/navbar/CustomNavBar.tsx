@@ -62,59 +62,59 @@ const calculator = [
     icon: LiaArtstation,
   },
 ]
-const products = [
-  {
-    name: "Analytics",
-    description: "Get a better understanding traffic",
-    href: "#",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Engagement",
-    description: "Speak directly to your customers",
-    href: "#",
-    icon: CursorArrowRaysIcon,
-  },
-  {
-    name: "Security",
-    description: "Your customers’ data will be safe",
-    href: "#",
-    icon: FingerPrintIcon,
-  },
-  {
-    name: "Integrations",
-    description: "Connect with third-party tools",
-    href: "#",
-    icon: SquaresPlusIcon,
-  },
-  {
-    name: "Automations",
-    description: "Build strategic funnels that will convert",
-    href: "#",
-    icon: ArrowPathIcon,
-  },
-]
+// const products = [
+//   {
+//     name: "Analytics",
+//     description: "Get a better understanding traffic",
+//     href: "#",
+//     icon: ChartPieIcon,
+//   },
+//   {
+//     name: "Engagement",
+//     description: "Speak directly to your customers",
+//     href: "#",
+//     icon: CursorArrowRaysIcon,
+//   },
+//   {
+//     name: "Security",
+//     description: "Your customers’ data will be safe",
+//     href: "#",
+//     icon: FingerPrintIcon,
+//   },
+//   {
+//     name: "Integrations",
+//     description: "Connect with third-party tools",
+//     href: "#",
+//     icon: SquaresPlusIcon,
+//   },
+//   {
+//     name: "Automations",
+//     description: "Build strategic funnels that will convert",
+//     href: "#",
+//     icon: ArrowPathIcon,
+//   },
+// ]
 
-const company = [
-  {
-    name: "Contac Us",
-    href: "/contact-us",
-    description: "Contact us for details and some more contents",
-    icon: RiContactsFill,
-  },
-  {
-    name: "About Us",
-    href: "/about-us",
-    description: "See About us and our teams",
-    icon: FcAbout,
-  },
-  {
-    name: "Careers",
-    href: "/career",
-    description: "Career Oportunities",
-    icon: MdWork,
-  },
-]
+// const company = [
+//   {
+//     name: "Contact Us",
+//     href: "/contact-us",
+//     description: "Contact us for details and some more contents",
+//     icon: RiContactsFill,
+//   },
+//   {
+//     name: "About Us",
+//     href: "/about-us",
+//     description: "See About us and our teams",
+//     icon: FcAbout,
+//   },
+//   {
+//     name: "Careers",
+//     href: "/career",
+//     description: "Career Oportunities",
+//     icon: MdWork,
+//   },
+// ]
 const callsToAction = [
   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
   { name: "Contact sales", href: "tel:7451073504", icon: PhoneIcon },
@@ -149,7 +149,7 @@ export default function CustomNavBar() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
-          <Popover className="">
+          {/* <Popover className="">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
               Services
               <ChevronDownIcon
@@ -279,7 +279,7 @@ export default function CustomNavBar() {
                 </div>
               </Popover.Panel>
             </Transition>
-          </Popover>
+          </Popover> */}
           <Popover className="">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
               Calculators
@@ -377,150 +377,15 @@ export default function CustomNavBar() {
                         />
                       </div>
                       <h2 className="py-2 font-bold font-[#555]">
-                        Technovita Store OS
+                        Technovita Solution
                       </h2>
 
                       <p>
-                        The ultimate store management platform. Elevate store
-                        experiences for everyone, powered by our cloud-based,
-                        in-store solution. Delight customers, empower store
-                        staff, boost sales, and simplify operations, all through
-                        a mobile app.
-                      </p>
-                    </div>
-                    <div>
-                      <button className=" flex w-auto gap-2 text-white content-center justify-around bg-[#2f31ac] rounded-full p-2 place-content-center px-5">
-                        <h1 className="text-base text-center">try now</h1>
-                        <ArrowLongRightIcon
-                          className="h-6 w-6 text-white-600 group-hover:text-indigo-600"
-                          aria-hidden="true"
-                        />
-                      </button>
-                    </div>
-                    <div></div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                  {callsToAction.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
-                    >
-                      <item.icon
-                        className="h-5 w-5 flex-none text-gray-400"
-                        aria-hidden="true"
-                      />
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </Popover.Panel>
-            </Transition>
-          </Popover>
-          <Popover className="">
-            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-              Company
-              <ChevronDownIcon
-                className="h-5 w-5 flex-none text-gray-400"
-                aria-hidden="true"
-              />
-            </Popover.Button>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-200"
-              enterFrom="opacity-0 translate-y-1"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition ease-in duration-150"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-1"
-            >
-              <Popover.Panel className="absolute left-0 mr-5 top-full z-10 mt-3 w-2/3 max-w-full overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                <div className="flex flex-row justify-between">
-                  <div className=" flex flex-col">
-                    <div className="pl-16 pt-6">
-                      <Link
-                        href="/calculator"
-                        className="text-2xl font-sans font-semibold"
-                      >
-                        Company
-                      </Link>
-                    </div>
-                    <div className="flex flex-row px-10">
-                      <div className="p-2">
-                        {company.map((item) => (
-                          <div
-                            key={item.name}
-                            className="group relative my-2 flex items-center gap-x-2 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
-                          >
-                            <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                              <item.icon
-                                className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                                aria-hidden="true"
-                              />
-                            </div>
-                            <div className="flex-auto">
-                              <Link
-                                href={item.href}
-                                className="block font-semibold text-gray-900"
-                              >
-                                {item.name}
-                                <span className="absolute inset-0" />
-                              </Link>
-                              <p className="mt-1 text-gray-600">
-                                {item.description}
-                              </p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      {/* <div className="p-2">
-                        {calculator.map((item) => (
-                          <div
-                            key={item.name}
-                            className="group relative my-2 flex items-center gap-x-6 rounded-xl p-4 text-sm leading-6 hover:bg-gray-100 border-2 border-gray-900/5 cursor-pointer"
-                          >
-                            <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                              <item.icon
-                                className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                                aria-hidden="true"
-                              />
-                            </div>
-                            <div className="flex-auto">
-                              <Link
-                                href={item.href}
-                                className="block font-semibold text-gray-900"
-                              >
-                                {item.name}
-                                <span className="absolute inset-0" />
-                              </Link>
-                              <p className="mt-1 text-gray-600">
-                                {item.description}
-                              </p>
-                            </div>
-                          </div>
-                        ))}
-                      </div> */}
-                    </div>
-                  </div>
-                  <div className="p-2 flex flex-col justify-between">
-                    <div className="  cursor-pointer max-w-[400px] max-h-[400px]">
-                      <div className="rounded-xl">
-                        <Image
-                          width={390}
-                          height={180}
-                          src="/nav1.webp"
-                          alt={"whatever"}
-                        />
-                      </div>
-                      <h2 className="py-2 font-bold font-[#555]">
-                        Technovita Store OS
-                      </h2>
-
-                      <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Cum totam et dolorum.
+                        We at technovita here provides all kind of ecommerce
+                        services to make your brand visible on the internet , to
+                        increase the sales . We have best in house team and
+                        dedicated account managers who provides you dedicated
+                        services.
                       </p>
                     </div>
                     <div>
@@ -581,7 +446,7 @@ export default function CustomNavBar() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only"> Technovita Solution</span>
 
               <h1>TECHNOVITA</h1>
             </Link>
@@ -597,34 +462,6 @@ export default function CustomNavBar() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <Disclosure as="div" className="-mx-3">
-                  {({ open }) => (
-                    <>
-                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                        Product
-                        <ChevronDownIcon
-                          className={classNames(
-                            open ? "rotate-180" : "",
-                            "h-5 w-5 flex-none"
-                          )}
-                          aria-hidden="true"
-                        />
-                      </Disclosure.Button>
-                      <Disclosure.Panel className="mt-2 space-y-2">
-                        {[...products, ...callsToAction].map((item) => (
-                          <Disclosure.Button
-                            key={item.name}
-                            as="a"
-                            href={item.href}
-                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                          >
-                            {item.name}
-                          </Disclosure.Button>
-                        ))}
-                      </Disclosure.Panel>
-                    </>
-                  )}
-                </Disclosure>
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
@@ -653,34 +490,7 @@ export default function CustomNavBar() {
                     </>
                   )}
                 </Disclosure>
-                <Disclosure as="div" className="-mx-3">
-                  {({ open }) => (
-                    <>
-                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                        Company
-                        <ChevronDownIcon
-                          className={classNames(
-                            open ? "rotate-180" : "",
-                            "h-5 w-5 flex-none"
-                          )}
-                          aria-hidden="true"
-                        />
-                      </Disclosure.Button>
-                      <Disclosure.Panel className="mt-2 space-y-2">
-                        {company.map((item) => (
-                          <Disclosure.Button
-                            key={item.name}
-                            as="a"
-                            href={item.href}
-                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                          >
-                            {item.name}
-                          </Disclosure.Button>
-                        ))}
-                      </Disclosure.Panel>
-                    </>
-                  )}
-                </Disclosure>
+
                 <Link
                   href="/seller-services"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
