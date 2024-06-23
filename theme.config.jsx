@@ -1,5 +1,6 @@
 export default {
-  logo: <span>Technovita Seller Documentation</span>,
+  logo: <span>TechnovitaSolution Seller Documentation</span>,
+  logoLink: false,
   project: {
     link: "https://github.com/webnior/technovita",
   },
