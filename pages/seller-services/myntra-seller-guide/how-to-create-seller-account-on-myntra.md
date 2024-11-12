@@ -38,7 +38,7 @@ Choose a business model, such as PPMP C+L(MDirect), and click "Progress" to save
 
 ## 7. Warehouse Details
 
-Provide warehouse pin code, GST details, and address.
+Provide warehouse pin code, GST details, and Address.
 
 ## 8. Bank Details
 
