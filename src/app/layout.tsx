@@ -1,6 +1,7 @@
 import Footer from "@/components/footer/footer"
 import CustomNavBar from "@/components/navbar/CustomNavBar"
 import { Providers } from "@/components/providers"
+import FloatingButtons from "@/components/floatingButtons/FloatingButtons"
 
 import "@/styles/globals.css"
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Providers>
           <CustomNavBar />
           {children}
+          <FloatingButtons />
           <Footer />
         </Providers>
       </body>

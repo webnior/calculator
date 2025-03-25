@@ -64,6 +64,26 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        "bounce-slow": {
+          "0%, 100%": {
+            transform: "translateY(-10%)",
+            animationTimingFunction: "cubic-bezier(0.8, 0, 1, 1)",
+          },
+          "50%": {
+            transform: "translateY(0)",
+            animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+          },
+        },
+        "wave": {
+          "0%": { transform: "rotate(0deg)" },
+          "10%": { transform: "rotate(14deg)" },
+          "20%": { transform: "rotate(-8deg)" },
+          "30%": { transform: "rotate(14deg)" },
+          "40%": { transform: "rotate(-4deg)" },
+          "50%": { transform: "rotate(10deg)" },
+          "60%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(0deg)" },
+        },
         "text-slide-2": {
           "0%, 40%": {
             transform: "translateY(0%)",
@@ -208,20 +228,15 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "text-slide-2":
-          "text-slide-2 5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
-        "text-slide-3":
-          "text-slide-3 7.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
-        "text-slide-4":
-          "text-slide-4 10s cubic-bezier(0.83, 0, 0.17, 1) infinite",
-        "text-slide-5":
-          "text-slide-5 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
-        "text-slide-6":
-          "text-slide-6 15s cubic-bezier(0.83, 0, 0.17, 1) infinite",
-        "text-slide-7":
-          "text-slide-7 17.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
-        "text-slide-8":
-          "text-slide-8 20s cubic-bezier(0.83, 0, 0.17, 1) infinite",
+        "bounce-slow": "bounce-slow 2s infinite",
+        "wave": "wave 2.5s ease-in-out infinite",
+        "text-slide-2": "text-slide-2 5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
+        "text-slide-3": "text-slide-3 7.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
+        "text-slide-4": "text-slide-4 10s cubic-bezier(0.83, 0, 0.17, 1) infinite",
+        "text-slide-5": "text-slide-5 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
+        "text-slide-6": "text-slide-6 15s cubic-bezier(0.83, 0, 0.17, 1) infinite",
+        "text-slide-7": "text-slide-7 17.5s cubic-bezier(0.83, 0, 0.17, 1) infinite",
+        "text-slide-8": "text-slide-8 20s cubic-bezier(0.83, 0, 0.17, 1) infinite",
       },
       borderRadius: {
         xl: `calc(var(--radius) + 4px)`,
