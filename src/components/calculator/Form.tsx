@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { FaCalculator, FaPhone, FaWhatsapp } from "react-icons/fa"
 import { GrAmazon } from "react-icons/gr"
 import { LiaArtstation } from "react-icons/lia"
 import { SiCoinmarketcap, SiFlipkart } from "react-icons/si"
@@ -133,14 +134,38 @@ export function CalculatorForm({
 
   const selectedPlateform = form.watch("plateform")
 
+  // Platform display names for result section
+  const platformInfo = {
+    flipkart: {
+      name: "Flipkart",
+      color: "text-blue-500",
+    },
+    amazon: {
+      name: "Amazon",
+      color: "text-yellow-500",
+    },
+    myntra: {
+      name: "Myntra",
+      color: "text-pink-500",
+    },
+    ajio: {
+      name: "AJIO",
+      color: "text-indigo-500",
+    },
+    shopsy: {
+      name: "Shopsy",
+      color: "text-green-500",
+    },
+  }
+
   return (
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <Card>
-            <CardHeader>
-              <CardTitle>Calculators</CardTitle>
-              <CardDescription>Calculate your bills</CardDescription>
+          <Card className="w-full">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl md:text-3xl">Marketplace Fee Calculators</CardTitle>
+              <CardDescription className="text-sm md:text-base">Calculate your selling fees and profit margins</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-6">
               <FormField
@@ -150,7 +175,7 @@ export function CalculatorForm({
                   <FormItem>
                     <RadioGroup
                       defaultValue={field.value}
-                      className="grid grid-cols-4 gap-4"
+                      className="grid grid-cols-2 md:grid-cols-4 gap-3"
                       onValueChange={field.onChange}
                     >
                       <div>
@@ -162,7 +187,7 @@ export function CalculatorForm({
                         />
                         <Label
                           htmlFor="flipkart"
-                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-3 md:p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                         >
                           <span className="flex w-8 h-8 justify-center">
                             <SiFlipkart className="w-6 h-6" />
@@ -180,7 +205,7 @@ export function CalculatorForm({
                         />
                         <Label
                           htmlFor="amazon"
-                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-3 md:p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                         >
                           <span className="flex w-8 h-8 justify-center">
                             <GrAmazon className="w-6 h-6" />
@@ -197,7 +222,7 @@ export function CalculatorForm({
                         />
                         <Label
                           htmlFor="myntra"
-                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-3 md:p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                         >
                           <span className="flex w-8 h-8 justify-center">
                             <SiCoinmarketcap className="w-6 h-6" />
@@ -214,7 +239,7 @@ export function CalculatorForm({
                         />
                         <Label
                           htmlFor="ajio"
-                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                          className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-3 md:p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                         >
                           <span className="flex w-8 h-8 justify-center">
                             <LiaArtstation className="w-6 h-6" />
@@ -244,7 +269,7 @@ export function CalculatorForm({
                   </FormItem>
                 )}
               />
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <FormField
                   control={form.control}
                   name="fbf"
@@ -310,7 +335,7 @@ export function CalculatorForm({
                   control={form.control}
                   name="pcat"
                   render={({ field }) => (
-                    <FormItem className="grid gap-2 col-span-2">
+                    <FormItem className="grid gap-2 col-span-1 md:col-span-2">
                       <Label htmlFor="pcat">Product Category</Label>
                       <Select
                         onValueChange={field.onChange}
@@ -335,37 +360,39 @@ export function CalculatorForm({
                 />
               </div>
 
-              <FormField
-                control={form.control}
-                name="sellPrice"
-                render={({ field }) => (
-                  <FormItem className="grid gap-2">
-                    <Label htmlFor="price">Selling Price</Label>
-                    <Input id="price" placeholder="&#x20B9;" {...field} />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="sellPrice"
+                  render={({ field }) => (
+                    <FormItem className="grid gap-2">
+                      <Label htmlFor="price">Selling Price</Label>
+                      <Input id="price" placeholder="&#x20B9;" {...field} />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <FormField
-                control={form.control}
-                name="weight"
-                render={({ field }) => (
-                  <FormItem className="grid gap-2">
-                    <Label htmlFor="weight">
-                      {selectedPlateform === "myntra" ||
-                      selectedPlateform === "ajio"
-                        ? "Discount (%)"
-                        : "Weight (gram)"}{" "}
-                    </Label>
-                    <Input id="weight" placeholder="gm" {...field} />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <FormField
+                  control={form.control}
+                  name="weight"
+                  render={({ field }) => (
+                    <FormItem className="grid gap-2">
+                      <Label htmlFor="weight">
+                        {selectedPlateform === "myntra" ||
+                        selectedPlateform === "ajio"
+                          ? "Discount (%)"
+                          : "Weight (gram)"}{" "}
+                      </Label>
+                      <Input id="weight" placeholder="gm" {...field} />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
             </CardContent>
             <CardFooter>
-              <Button className="w-full" type="submit">
+              <Button className="w-full text-base" type="submit">
                 Calculate
               </Button>
             </CardFooter>
@@ -373,38 +400,65 @@ export function CalculatorForm({
         </form>
       </Form>
       {error && (
-        <h4 className="text-center font-bold p-4 bg-violet-300 text-blue-900">
-          {error}
-        </h4>
+        <div className="mt-4">
+          <h4 className="text-center font-bold p-4 bg-violet-300 text-blue-900 rounded-md">
+            {error}
+          </h4>
+        </div>
       )}
       {response && !error && (
-        <>
-          <div className="mv-10">
-            <Table>
-              <TableCaption>Detailed Analysis.</TableCaption>
-              <TableBody>
-                {Object.keys(Columns[selectedPlateform]).map((key, index) => {
-                  return (
-                    <TableRow key={index}>
-                      <TableCell className="font-medium">
-                        {
-                          // @ts-ignore
-                          Columns[selectedPlateform][key]
-                        }
-                      </TableCell>
-                      <TableCell className="text-right">
-                        {
-                          // @ts-ignore
-                          Math.round(response[key] * 100) / 100
-                        }
-                      </TableCell>
-                    </TableRow>
-                  )
-                })}
-              </TableBody>
-            </Table>
+        <div className="mt-6 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg shadow-sm">
+          <Table className="overflow-x-auto">
+            <TableCaption className="mt-2 mb-4 text-base">Detailed Fee Analysis</TableCaption>
+            <TableBody>
+              {Object.keys(Columns[selectedPlateform]).map((key, index) => {
+                return (
+                  <TableRow key={index}>
+                    <TableCell className="font-medium">
+                      {
+                        // @ts-ignore
+                        Columns[selectedPlateform][key]
+                      }
+                    </TableCell>
+                    <TableCell className="text-right">
+                      {
+                        // @ts-ignore
+                        Math.round(response[key] * 100) / 100
+                      }
+                    </TableCell>
+                  </TableRow>
+                )
+              })}
+            </TableBody>
+          </Table>
+          {/* E-commerce Services Promotion Section */}
+          <div className="mt-6 border-t pt-5">
+            <div className="text-center mb-4">
+              <h3 className="text-lg font-bold">Need help with your e-commerce business?</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                Our experts can help you optimize your{" "}
+                {platformInfo[selectedPlateform]?.name || TitleCase(selectedPlateform)} seller account and increase profits
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <a
+                href={`https://wa.me/+917451073504?text=Hi,%20I%20need%20help%20with%20my%20e-commerce%20business%20on%20${platformInfo[selectedPlateform]?.name || TitleCase(selectedPlateform)}`}
+                target="_blank"
+                className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg transition-colors shadow-sm"
+              >
+                <FaWhatsapp className="text-xl" />
+                <span className="font-medium">WhatsApp Us</span>
+              </a>
+              <a
+                href="tel:+917451073504"
+                className="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg transition-colors shadow-sm"
+              >
+                <FaPhone className="text-lg" />
+                <span className="font-medium">Call Us</span>
+              </a>
+            </div>
           </div>
-        </>
+        </div>
       )}
     </>
   )
