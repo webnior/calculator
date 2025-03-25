@@ -1,9 +1,6 @@
 // import { type Plateforms } from "@/lib/types"
-import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { FaCalculator } from "react-icons/fa"
-
 import { Plateforms } from "@/lib/types"
 import { CalculatorForm } from "@/components/calculator/Form"
 
@@ -94,6 +91,8 @@ export default function Plateform({
           }}
         />
       </div>
+      
+     
     </div>
   )
 }

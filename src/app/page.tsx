@@ -5,7 +5,8 @@ import { useTheme } from "next-themes"
 
 import { Separator } from "@/components/ui/separator"
 import { CalculatorForm } from "@/components/calculator/Form"
-import WhatsAppWidget from "@/components/whatsappBottom/WhatsAppWidget"
+import CalculatorCards from "@/components/calculator/CalculatorCards"
+import ServicesSection from "@/components/services/ServicesSection"
 
 type Theme = "light" | "dark"
 
@@ -14,8 +15,8 @@ export default function Home() {
   const { setTheme } = useTheme()
 
   return (
-    <main className="min-h-screen px-4 sm:px-6 md:px-8 dark:bg-black dark:text-white">
-      <div className="max-w-6xl mx-auto py-6 md:py-10">
+    <main className="min-h-screen dark:bg-black dark:text-white">
+      <div className="max-w-6xl mx-auto py-6 md:py-10 px-4 sm:px-6 md:px-8">
         <div className="mb-5">
           <CalculatorForm
             defaultValue={{
@@ -27,7 +28,11 @@ export default function Home() {
         <Separator className="my-4" />
         <Separator className="my-4" />
       </div>
-      <WhatsAppWidget />
+      
+      <CalculatorCards />
+      
+      <ServicesSection />
+      
     </main>
   )
 }
