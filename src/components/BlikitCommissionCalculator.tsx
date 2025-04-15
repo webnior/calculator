@@ -91,7 +91,7 @@ export default function BlikitCommissionCalculator(): JSX.Element {
     const inwarding: number = INWARDING_FEE_PER_UNIT * quantity
     setInwardingFee(inwarding)
 
-    // 2. Storage Fee
+    // 2. Storage Fee`
     let storageRate: number = 0
     let volumeBasedRate: number = 0
 
@@ -453,7 +453,7 @@ export default function BlikitCommissionCalculator(): JSX.Element {
           complete fee structure is essential for calculating your profitability
           and planning your pricing strategy effectively. Our interactive
           Blinkit Commission Calculator above helps you estimate your costs, but
-          let's dive deeper into what each fee means for your business.
+          let dive deeper into what each fee means for your business.
         </p>
 
         <h3 className="text-xl font-semibold text-gray-800 mt-8 mb-4">
@@ -464,10 +464,10 @@ export default function BlikitCommissionCalculator(): JSX.Element {
           1. Inwarding Fee (₹7.50 per unit)
         </h4>
         <p className="text-gray-700">
-          Every unit you send to Blinkit's warehouse incurs an inwarding fee.
-          This one-time fee is charged when your inventory is received and
-          processed at their fulfillment center. For high-volume sellers, these
-          costs can add up quickly, so consider bundling products when possible.
+          Every unit you send to Blinkit warehouse incurs an inwarding fee. This
+          one-time fee is charged when your inventory is received and processed
+          at their fulfillment center. For high-volume sellers, these costs can
+          add up quickly, so consider bundling products when possible.
         </p>
 
         <h4 className="text-lg font-medium text-gray-800 mt-6 mb-2">
@@ -508,7 +508,7 @@ export default function BlikitCommissionCalculator(): JSX.Element {
         </h4>
         <p className="text-gray-700">
           The commission structure on Blinkit is tiered according to your
-          product's selling price:
+          product selling price:
         </p>
 
         <div className="overflow-x-auto mb-4">
@@ -555,7 +555,7 @@ export default function BlikitCommissionCalculator(): JSX.Element {
         <p className="text-gray-700">
           When a customer orders your product, Blinkit charges a fulfillment fee
           for picking, packing, and delivering each unit. This covers last-mile
-          delivery and ensures your product reaches customers within Blinkit's
+          delivery and ensures your product reaches customers within Blinkit
           promised delivery time.
         </p>
 
@@ -565,7 +565,7 @@ export default function BlikitCommissionCalculator(): JSX.Element {
         <ul className="list-disc pl-6 mb-4 text-gray-700">
           <li className="mb-1">
             <strong>Inventory Removal Fee</strong>: ₹5 per unit when you recall
-            inventory from Blinkit's warehouse
+            inventory from Blinkit warehouse
           </li>
           <li className="mb-1">
             <strong>Customer Return Fee</strong>: ₹50 per unit for customer
