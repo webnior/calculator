@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     title: "Blinkit Seller Commission Calculator | Calculate Your Earnings",
     description:
       "Calculate your potential earnings and commissions as a Blinkit seller with our free calculator tool.",
-    url: "https://yourdomain.com/blinkit-seller-calculator",
-    siteName: "Your Business Name",
+    url: "https://sellerguide.technovitasolution.in/blinkit-seller-calculator",
+    siteName: "Technovita Solution",
     images: [
       {
         url: "/public/blinkit-seller-calculator.webp",
