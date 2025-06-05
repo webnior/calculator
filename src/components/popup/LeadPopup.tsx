@@ -26,10 +26,10 @@ const platformOffers = {
     callText: "Speak with an Amazon Expert Now",
   },
   flipkart: {
-    title: "Flipkart Seller Special",
+    title: "🔥 Sell on Myntra & Ajio - Get FREE Setup Guidance Worth ₹5,000!",
     description:
-      "Claim your FREE 10-minute strategy session worth ₹3,000 to maximize your Flipkart profits!",
-    callText: "Talk to a Flipkart Specialist",
+      "EXCLUSIVE for Flipkart sellers: Complete store setup on both platforms - absolutely FREE Guidance and Support",
+    callText: "Claim My Free Setup!",
   },
   myntra: {
     title: "Myntra Growth Package",
