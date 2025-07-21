@@ -43,12 +43,6 @@ const platformOffers = {
       "Receive a FREE 10-minute consultation worth ₹3,000 to optimize your AJIO performance!",
     callText: "Speak with an AJIO Specialist",
   },
-  blinkit: {
-    title: "Free Blinkit Seller Consultation",
-    description:
-      "Get a FREE 10-minute consultation worth ₹3,000 to enhance your Blinkit sales!",
-    callText: "Talk to a Blinkit Expert",
-  },
   default: {
     title: "E-commerce Growth Offer",
     description:
@@ -86,8 +80,6 @@ const LeadPopup = () => {
       setPlatform("myntra")
     } else if (currentPath.includes("/calculator/ajio")) {
       setPlatform("ajio")
-    } else if (currentPath.includes("/blinkit-seller-calculator")) {
-      setPlatform("blinkit")
     } else {
       setPlatform("default")
     }
