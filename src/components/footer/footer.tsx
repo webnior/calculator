@@ -112,7 +112,7 @@ const Footer = () => {
                   </a>
                 </div>
                 <p className="text-base text-body-color dark:text-dark-6">
-                  &copy; 2018-2023 Technovita Solution
+                  &copy; 2018-2025 Technovita Solution
                 </p>
               </div>
             </div>
