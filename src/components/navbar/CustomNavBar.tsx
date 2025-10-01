@@ -59,7 +59,7 @@ const calculator = [
 
 const callsToAction = [
   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-  { name: "Contact sales", href: "tel:7451073504", icon: PhoneIcon },
+  { name: "Contact sales", href: "tel:7042163504", icon: PhoneIcon },
 ]
 
 function classNames(...classes: string[]) {
@@ -162,7 +162,10 @@ export default function CustomNavBar() {
                       className="flex items-center gap-x-1 rounded-full bg-indigo-600 px-3.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       View All
-                      <ArrowLongRightIcon className="h-4 w-4" aria-hidden="true" />
+                      <ArrowLongRightIcon
+                        className="h-4 w-4"
+                        aria-hidden="true"
+                      />
                     </Link>
                   </div>
                 </div>

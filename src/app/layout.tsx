@@ -1,8 +1,8 @@
+import FloatingButtons from "@/components/floatingButtons/FloatingButtons"
 import Footer from "@/components/footer/footer"
 import CustomNavBar from "@/components/navbar/CustomNavBar"
-import { Providers } from "@/components/providers"
-import FloatingButtons from "@/components/floatingButtons/FloatingButtons"
 import LeadPopup from "@/components/popup/LeadPopup"
+import { Providers } from "@/components/providers"
 
 import "@/styles/globals.css"
 
@@ -28,7 +28,7 @@ export default function RootLayout({
           <CustomNavBar />
           {children}
           <FloatingButtons />
-          <LeadPopup />
+          {/* <LeadPopup /> */}
           <Footer />
         </Providers>
       </body>

@@ -47,7 +47,7 @@ const Footer = () => {
                       </defs>
                     </svg>
                   </span>
-                  <span>+91 7451073504</span>
+                  <span>+91 7042163504</span>
                 </p>
               </div>
             </div>

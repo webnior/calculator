@@ -41,6 +41,6 @@ In this segment, we'll demystify the process of applying discounts to your produ
 Implementing discounts is a potent strategy to drive sales on Myntra. If you encounter any challenges or need further assistance during this process, don't hesitate to reach out. We're just a call away, and the contact number is conveniently provided on your screen. Our team is ready to assist you in every possible way, ensuring your journey in applying discounts on Myntra is seamless and successful.
 
 If you need any account management service or if you are facing challenges in growth of your ecommerce business you can get in touch with us for a free consulation.
-<a href="tel:+917451073504" style="text-decoration: none; background-color: #F2903D; color: white; padding: 5px 8px; border-radius: 5px; display: inline-block; text-align:center;">
+<a href="tel:+917042163504" style="text-decoration: none; background-color: #F2903D; color: white; padding: 5px 8px; border-radius: 5px; display: inline-block; text-align:center;">
 Get Free consultation
 </a>

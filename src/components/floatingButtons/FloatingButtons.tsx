@@ -1,17 +1,17 @@
-import React from 'react';
-import { FaPhone, FaWhatsapp } from 'react-icons/fa';
-import Link from 'next/link';
+import React from "react"
+import Link from "next/link"
+import { FaPhone, FaWhatsapp } from "react-icons/fa"
 
 const FloatingButtons = () => {
   // WhatsApp number - replace with the actual number
-  const whatsappNumber = '917451073504';
+  const whatsappNumber = "917042163504"
   // Phone number - replace with the actual number
-  const phoneNumber = '+917451073504';
+  const phoneNumber = "+917042163504"
 
   return (
     <>
       {/* Call Button - Left Bottom Corner */}
-      <Link 
+      <Link
         href={`tel:${phoneNumber}`}
         className="fixed left-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-all hover:bg-blue-700 hover:scale-110 animate-wave origin-bottom"
         aria-label="Call us"
@@ -20,7 +20,7 @@ const FloatingButtons = () => {
       </Link>
 
       {/* WhatsApp Button - Right Bottom Corner */}
-      <Link 
+      <Link
         href={`https://wa.me/${whatsappNumber}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -30,7 +30,7 @@ const FloatingButtons = () => {
         <FaWhatsapp className="h-5 w-5" />
       </Link>
     </>
-  );
-};
+  )
+}
 
-export default FloatingButtons;
+export default FloatingButtons

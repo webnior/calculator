@@ -129,7 +129,7 @@ const LeadPopup = () => {
   }
 
   // Phone number for direct call
-  const phoneNumber = "+917451073504"
+  const phoneNumber = "+917042163504"
 
   const offer = platformOffers[platform]
 

@@ -164,8 +164,12 @@ export function CalculatorForm({
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <Card className="w-full">
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl md:text-3xl">Marketplace Fee Calculators</CardTitle>
-              <CardDescription className="text-sm md:text-base">Calculate your selling fees and profit margins</CardDescription>
+              <CardTitle className="text-2xl md:text-3xl">
+                Marketplace Fee Calculators
+              </CardTitle>
+              <CardDescription className="text-sm md:text-base">
+                Calculate your selling fees and profit margins
+              </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-6">
               <FormField
@@ -409,7 +413,9 @@ export function CalculatorForm({
       {response && !error && (
         <div className="mt-6 p-4 bg-slate-50 dark:bg-slate-900 rounded-lg shadow-sm">
           <Table className="overflow-x-auto">
-            <TableCaption className="mt-2 mb-4 text-base">Detailed Fee Analysis</TableCaption>
+            <TableCaption className="mt-2 mb-4 text-base">
+              Detailed Fee Analysis
+            </TableCaption>
             <TableBody>
               {Object.keys(Columns[selectedPlateform]).map((key, index) => {
                 return (
@@ -434,15 +440,19 @@ export function CalculatorForm({
           {/* E-commerce Services Promotion Section */}
           <div className="mt-6 border-t pt-5">
             <div className="text-center mb-4">
-              <h3 className="text-lg font-bold">Need help with your e-commerce business?</h3>
+              <h3 className="text-lg font-bold">
+                Need help with your e-commerce business?
+              </h3>
               <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                 Our experts can help you optimize your{" "}
-                {platformInfo[selectedPlateform]?.name || TitleCase(selectedPlateform)} seller account and increase profits
+                {platformInfo[selectedPlateform]?.name ||
+                  TitleCase(selectedPlateform)}{" "}
+                seller account and increase profits
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <a
-                href={`https://wa.me/+917451073504?text=Hi,%20I%20need%20help%20with%20my%20e-commerce%20business%20on%20${platformInfo[selectedPlateform]?.name || TitleCase(selectedPlateform)}`}
+                href={`https://wa.me/+917042163504?text=Hi,%20I%20need%20help%20with%20my%20e-commerce%20business%20on%20${platformInfo[selectedPlateform]?.name || TitleCase(selectedPlateform)}`}
                 target="_blank"
                 className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded-lg transition-colors shadow-sm"
               >
@@ -450,7 +460,7 @@ export function CalculatorForm({
                 <span className="font-medium">WhatsApp Us</span>
               </a>
               <a
-                href="tel:+917451073504"
+                href="tel:+917042163504"
                 className="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white py-3 px-4 rounded-lg transition-colors shadow-sm"
               >
                 <FaPhone className="text-lg" />
