@@ -196,6 +196,12 @@ const platformStyles: Record<
     bg: "from-indigo-50 to-white",
     badge: "bg-indigo-600 text-white",
   },
+  blinkit: {
+    primary: "bg-green-600",
+    secondary: "text-green-700",
+    bg: "from-green-50 to-white",
+    badge: "bg-green-500 text-white",
+  },
 }
 
 export default function CalculatorPopups() {
@@ -206,6 +212,8 @@ export default function CalculatorPopups() {
     if (pathname.includes("/calculator/amazon")) return "amazon"
     if (pathname.includes("/calculator/myntra")) return "myntra"
     if (pathname.includes("/calculator/ajio")) return "ajio"
+    if (pathname.includes("/blinkit-seller-calculator-commissions"))
+      return "blinkit"
     return "default"
   }, [pathname])
 
@@ -224,10 +232,10 @@ export default function CalculatorPopups() {
   const [phone, setPhone] = useState("")
   const [successPopup, setSuccessPopup] = useState<PopupId | null>(null)
 
-  // timers: 5s and 35s
+  // timers: 5s and 30s
   useEffect(() => {
     const t1 = setTimeout(() => setShowMgmt(true), 5000)
-    const t2 = setTimeout(() => setShowCombo(true), 35000)
+    const t2 = setTimeout(() => setShowCombo(true), 30000)
     return () => {
       clearTimeout(t1)
       clearTimeout(t2)
@@ -323,6 +331,25 @@ export default function CalculatorPopups() {
         exit: "😮 Closing this means losing your FREE Myntra + Blinkit + Nykaa combo. This chance doesn’t come often!",
         badge: "FREE Triple Combo – Limited Time",
         tag: "Lead from Ajio Calculator – Triple Combo",
+      }
+    }
+    if (platform === "blinkit") {
+      if (popup === "mgmt")
+        return {
+          title: "⚡ Blinkit Account Management + Launch in More Cities",
+          sub: "Get expert Blinkit account management and expand your product presence across more cities to scale faster.",
+          cta: "👉 Talk to a Blinkit Growth Expert",
+          exit: "⚠️ Wait! Don’t miss city expansion support and growth-focused account management on Blinkit.",
+          badge: "Growth Offer",
+          tag: "Lead from Blinkit Page – Account Management & City Expansion",
+        }
+      return {
+        title: "🔥 Seller Onboarding: Myntra + Ajio + Nykaa",
+        sub: "Expand your brand beyond Blinkit. Get assisted onboarding on Myntra, Ajio, and Nykaa to grow across Fashion and Beauty.",
+        cta: "✨ Get Assisted Onboarding",
+        exit: "😮 Leaving now may delay your onboarding to Myntra, Ajio & Nykaa—are you sure?",
+        badge: "Limited Time",
+        tag: "Lead from Blinkit Page – Myntra/Ajio/Nykaa Onboarding",
       }
     }
     // default

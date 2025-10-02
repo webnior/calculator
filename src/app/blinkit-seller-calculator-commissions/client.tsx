@@ -2,11 +2,13 @@
 "use client"
 
 import BlikitCommissionCalculator from "@/components/BlikitCommissionCalculator"
+import CalculatorPopups from "@/components/popup/CalculatorPopups"
 import ProtectedContentWrapper from "@/components/ProtectedContentWrapper"
 
 export default function ClientBlinkit(): JSX.Element {
   return (
     <ProtectedContentWrapper>
+      <CalculatorPopups />
       <div className="container mx-auto py-8 px-4">
         <h1 className="text-3xl font-bold mb-6 text-center">
           Blinkit Seller Commission Calculation Process in 2025
